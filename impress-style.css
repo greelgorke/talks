@@ -62,7 +62,7 @@ ol {
 }
 
 ul {
-    list-style: circle;
+    list-style: none;
 }
 blockquote, q {
     quotes: none;
@@ -89,13 +89,7 @@ body {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
 
-    background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: rgb(242,244,245);
 }
 
 /*
@@ -182,6 +176,7 @@ a:focus {
     font-family: 'PT Serif', georgia, serif;
     font-size: 48px;
     line-height: 1.5;
+    color:rgb(74,71,72);
 }
 
 /*
@@ -445,6 +440,7 @@ h1 {
 }
 
 h2 {
+  color: rgb(89,115,162);
   font-style: italic;
 }
 
@@ -455,6 +451,19 @@ h3 {
 
 li {
   margin-bottom: 0.3em;
+}
+
+ul > li {
+  text-indent: -0.7em;
+}
+
+ul > li:before {
+  content: "»  ";
+  color: rgb(89,115,162);
+}
+
+li > img {
+  height: 1.1em;
 }
 
 pre {
