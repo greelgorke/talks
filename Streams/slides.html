@@ -4,7 +4,7 @@
   <title>Streams in JS, Node.js and Browser</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
-  <link href="impress-demo.css" rel="stylesheet" />
+  <link href="../impress-style.css" rel="stylesheet" />
   <link rel="stylesheet" href="../highlight/styles/monokai.css">
 <!--
   <link rel="stylesheet" href="../highlight/styles/brown_paper.css">
@@ -273,10 +273,10 @@ s.fork().pluck('res').each(function(res){
 
     <div id="highland-2" class="step" data-x="500" data-y="2750" data-z="200">
       <h2>lazy counter</h2>
-      <pre><code>var count = 1
+      <pre><code>var count = 0
 var streamIntsTill100 = _(function (push, next) {
-    var c = count++
-    if( c <= 100)
+    count += 1
+    if( count <= 100)
       push(null, count++);
     else
       push(new Error('Overflow!'))
