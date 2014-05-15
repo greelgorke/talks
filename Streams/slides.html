@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+  <title>Streams in JS, Node.js and Browser</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+  <link href="impress-demo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../highlight/styles/monokai.css">
+<!--
+  <link rel="stylesheet" href="../highlight/styles/brown_paper.css">
+-->
+  <script src="../highlight/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</head>
+<body>
+  <div id="impress">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+
+    <div class="step"  id="title" data-x="-200">
+      <h1>Streams in JS, Node.js and Browser</h1>
+    </div>
+
+    <div id="greelgorke" class="step" data-x="0" data-y="500" data-scale="0.05">
+      <h2>greelgorke</h2>
+      <ul>
+        <li>Gregor Elke</li>
+        <li>on twitter, github etc.</li>
+        <li>Node.js, Streams, Architecture Design</li>
+        <li>working @ codecentric</li>
+      </ul>
+    </div>
+
+    <div id="agenda" class="step" data-y="1000">
+      <h2>Agenda</h2>
+      <ol>
+        <li>What is a Stream</li>
+        <li>Streams versatility</li>
+        <li>Stream tools</li>
+      </ol>
+    </div>
+
+    <div id="what" class="step" data-x="1300" data-y="0" data-z="0" data-scale="1">
+      <h1>What is a Stream?</h1>
+    </div>
+
+    <div id="time-1" class="step" data-x="1000" data-y="200" data-z="-500" data-scale="1">
+        <center>data</center>
+    </div>
+    <div id="time-2" class="step" data-x="1200" data-y="200" data-z="-500" data-scale="1">
+        <center>distributed</center>
+    </div>
+    <div id="time-3" class="step" data-x="1440" data-y="200" data-z="-500" data-scale="1">
+        <center>in time</center>
+    </div>
+    <div id="pull" class="step" data-x="1300" data-y="-200" data-z="-800" data-scale="1">
+        <center>pull</center>
+    </div>
+    <div id="push" class="step" data-x="1500" data-y="-200" data-z="-300" data-scale="1">
+        <center>push</center>
+    </div>
+    <div id="backpressure" class="step" data-x="1100" data-y="-300" data-z="-200" data-scale="1">
+        <center>backpressure</center>
+    </div>
+    <div id="kinds-of" class="step" data-x="1300" data-y="300" data-z="-100" data-scale="1">
+        <center>read | both | write</center>
+    </div>
+
+    <div id="stream-is" class="step" data-x="1300" data-y="1000" >
+      <h2>A Stream is</h2>
+      <ul>
+        <li>sequence of data distributed in time
+        <li>pull and/or push based
+        <li>backpressure
+        <li>producer, consumer or both
+        <li><code>src.pipe(dest)</code>
+      <ul>
+    </div>
+    <div id="seq-messages" class="step" data-x="1300" data-y="2000">
+        <h1>a sequence of messages distributed in time</h1>
+
+    </div>
+
+    <div id="versatile" class="step" data-x="3000" data-y="1000" data-rotate="-90">
+      <h2>Streams are versatile</h2>
+      <ul>
+        <li>memory control
+        <li>jit transformation
+        <li>interface
+        <li>flow control
+      </ul>
+    </div>
+
+    <div id="mem-control" class="step" data-x="2800" data-y="1700" data-z="-250" data-rotate="-90"  data-scale="0.5">
+      <h2>Memory Control</h2>
+      <pre><code>var fileStream = fs.createReadStream(filename)
+fileStream.on('readable', function(){
+  var chunk
+  while( (chunk = fileStream.read() ) != null )
+    doSomething(chunk)
+})
+//or
+fileStream.pipe(response)</code></pre>
+    </div>
+
+    <div id="jit-trans" class="step" data-x="3000" data-y="500" data-z="-300" data-rotate="-90"  data-scale="0.5">
+      <h2>JIT-Transformation</h2>
+      <pre><code>var devocalize = new stream.Transform()
+
+devocalize._transform = function(chunk, enc, cb) {
+  var devoc = chunk.toString()
+              .replace( /(a|e|i|o|u)/gi , '')
+  this.push(devoc)
+  cb()
+}
+
+request.pipe(devocalize).pipe(response)</code></pre>
+    </div>
+
+    <div id="interface" class="step" data-x="3300" data-y="1700" data-z="-350" data-rotate="-90"  data-scale="0.5">
+      <h2>Module Interface</h2>
+      <pre><code>module.exports = Devocalize
+
+function Devocalize(args){
+  Transform.call(this, args)
+}
+Devocalize.prototype._transform =
+  function(chunk, enc, cb) {
+    var devoc = chunk.toString()
+                .replace( /(a|e|i|o|u)/gi , '')
+    this.push(devoc)
+    cb()
+  }
+//---
+request.pipe(new Devocalize()).pipe(response)</code></pre>
+    </div>
+
+    <div id="flow-1" class="step" data-x="3300" data-y="500" data-z="-100" data-rotate="-90">
+      <h2>Flow Control</h2>
+      <pre><code>var hl = require('highland')
+
+var server = hl('request', httpServer, ['req', 'res'])</code></pre>
+    </div>
+
+    <div id="flow-2" class="step" data-x="3757" data-y="100" data-z="-100" data-rotate="-90" data-rotate-x="15">
+      <pre><code>server.fork()
+  .filter(function(reqRes){
+    return reqRes.req.method === 'POST'
+  })
+  .map(function(reqResPosts){
+    hl(reqRes.req)
+      .pipe(createWriteStream(reqRes.req.url))
+    return reqRes.res
+  })
+  .each(function(res){
+    res.writeHead(201)
+    res.end()
+  })</code></pre>
+    </div>
+
+    <div id="flow-3" class="step" data-x="3650" data-y="900" data-z="-100" data-rotate="-90" data-rotate-x="-15">
+      <pre><code>server.fork()
+  .filter(function(reqRes){
+    return reqRes.req.method === 'GET'
+  })
+  .each(function(reqRes){
+    createReadStream(reqRes.req.url).pipe(reqRes.res)
+  })</code></pre>
+    </div>
+
+    <div id="core" class="step" data-x="5000" data-y="1500" data-rotate="0">
+      <h2>Node.js Core Streams</h2>
+      <ul>
+        <li>EventEmitter + Unix Pipes = Stream
+        <li>Readable Writable Duplex Transform
+        <li>floating - paused
+        <li><code>{objectMode:true}<code>
+        <li>'readable-stream'
+      </ul>
+    </div>
+
+    <div id="core-1" class="step" data-x="5500" data-y="2000" data-z="100"data-rotate="0">
+      <pre><code>function Dup( ){
+  Duplex.call(this)
+}
+util.inherits(Dup, Duplex)
+
+Dup.prototype._write = function(chunk, enc, cb){
+  consume(chunk, enc)
+  cb()
+}
+
+Dup.prototype._read = function( size ){
+ this.push( createChunk(size) )
+}</code></pre>
+    </div>
+
+    <div id="core-2" class="step" data-x="4800" data-y="2500" data-z="200" data-rotate="0">
+      <pre><code>function ClickStream( event, elem ){
+  Readable.call(this,{objectMode:true})
+  $(sel).on('click', (function(event){
+    this.push(event)
+  }).bind(this))
+}
+util.inherits(ClickStream, Readable)
+
+ClickStream.prototype._read = function( size ){
+ this.push( this.createChunk(size) )
+}</code></pre>
+    </div>
+
+    <div id="event-stream" class="step" data-x="3500" data-y="3300" data-rotate="90">
+      <h2>EventStream</h2>
+      <ul>
+        <li>"a toolkit to make creating and working with streams easy"
+        <li>a collection of user-land streams
+        <li>create a stream from a function
+        <li>Streams are flow control
+        <li>Streams are like Arrays but in time
+      </ul>
+    </div>
+
+    <div id="event-stream-1" class="step" data-x="2950" data-y="3500" data-z="250"data-rotate="90">
+      <h2>remember devocalize?</h2>
+      <pre><code>es.map(function (data, callback) {
+  var result = data.replace( /(a|e|i|o|u)/gi , '')
+  callback(null, result)
+})</code></pre>
+    </div>
+
+    <div id="event-stream-2" class="step" data-x="2500" data-y="3300" data-z="0" data-rotate="90">
+      <h2>more generic</h2>
+      <pre><code>es.through(function write(data) {
+    this.emit('data', data.replace( /(a|e|i|o|u)/gi , ''))
+    //this.pause()
+  },
+  function end () { //optional
+    this.emit('end')
+  })</code></pre>
+      <i>push based but with pause/resume</i>
+    </div>
+
+    <div id="highland" class="step" data-x="1500" data-y="3000" data-rotate="0">
+      <h2>Highland.js</h2>
+      <ul>
+        <li>flow control at first
+        <li>streams + functional programming
+        <li>pull-based
+        <li>currying, lazyness
+        <li>forking, mapping, pattern matching
+        <li>higher order streams
+      </ul>
+    </div>
+
+    <div id="highland-1" class="step" data-x="800" data-y="3500" data-z="100">
+      <h2>http log server?</h2>
+      <pre><code>var s = hl('request', httpServer, ['req', 'res'])
+
+s.fork().pluck('req').map(hl)
+  .sequence().pipe(process.stdout)
+s.fork().pluck('res').each(function(res){
+  res.writeHead(200)
+  res.end('Success!')
+})</code></pre>
+    </div>
+
+    <div id="highland-2" class="step" data-x="500" data-y="2750" data-z="200">
+      <h2>lazy counter</h2>
+      <pre><code>var count = 1
+var streamIntsTill100 = _(function (push, next) {
+    var c = count++
+    if( c <= 100)
+      push(null, count++);
+    else
+      push(new Error('Overflow!'))
+    next()
+})
+
+streamIntsTill100
+  .stopOnError(console.error)
+  .toArray(console.log)</code></pre>
+    </div>
+
+    <div id="highland-3" class="step" data-x="0" data-y="2000" data-z="300">
+      <h2>pattern matching and curry</h2>
+      <pre><code>var zeroLength = _.where({length: 0})
+var startWithHH = _.where({0: 'H', 1: 'H'})
+
+zeroLength( _(['', 'HH.js', function(){}, [], ]) )
+  .each(console.log)
+startWithHH( _(['Foobar', 'HH.js', ['H','H'], ]) )
+  .each(console.log)</code></pre>
+    </div>
+
+    <div id="awesome" class="step" data-x="3000" data-y="2000" data-z="5000" data-rotate="45">
+      <h1>Use streams you must! They are awesome!</h1>
+    </div>
+    <div id="qa" class="step" data-x="2000" data-y="-500" data-z="1500" data-scale="7">
+      <h1>Thank you! Questions?<h1>
+    </div>
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+      Questions?
+    </div>
+  </div>
+<!--script src="https://raw.githubusercontent.com/bartaz/impress.js/master/js/impress.js"></script-->
+<script src="../impress.js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
