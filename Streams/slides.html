@@ -34,7 +34,7 @@
         <li>Gregor Elke</li>
         <li>on twitter, github etc.</li>
         <li>Node.js, Streams, Architecture Design</li>
-        <li>working @ <img alt="codecentric" src="../logo-codecentric.png"/></li>
+        <li>working @ <a target="_blank" href="http://www.codecentric.de"><img alt="codecentric" src="../logo-codecentric.png"/></a></li>
       </ul>
     </div>
 
@@ -47,7 +47,7 @@
       </ol>
     </div>
 
-    <div id="what" class="step" data-x="1300" data-y="0" data-z="0" data-scale="1">
+    <div id="what" class="step" data-x="1300" data-y="0" data-z="1000" data-scale="1">
       <h2>What is a Stream?</h2>
     </div>
 
@@ -176,13 +176,13 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
     </div>
 
     <div id="core" class="step" data-x="5000" data-y="1500" data-rotate="0">
-      <h2>Node.js Core Streams</h2>
+      <h2><a target="_blank" href="http://nodejs.org/api/stream.html">Node.js Core Streams</a></h2>
       <ul>
         <li>EventEmitter + Unix Pipes = Stream
         <li>Readable Writable Duplex Transform
         <li>floating - paused
         <li><code>{objectMode:true}<code>
-        <li>'readable-stream'
+        <li><a target="_blank" href="https://github.com/isaacs/readable-stream">'readable-stream'</a>
       </ul>
     </div>
 
@@ -203,21 +203,20 @@ Dup.prototype._read = function( size ){
     </div>
 
     <div id="core-2" class="step" data-x="4800" data-y="2500" data-z="200" data-rotate="0">
-      <pre><code>function ClickStream( event, elem ){
-  Readable.call(this,{objectMode:true})
-  $(sel).on('click', (function(event){
-    this.push(event)
-  }).bind(this))
+      <pre><code>function CharStream( elem ){
+  Readable.call(this)
+  var self = this
+  elem.on('keypress', function collect(event){
+    self.push(String.fromCharCode(event.which))
+  }
 }
-util.inherits(ClickStream, Readable)
+util.inherits(CharStream, Readable)
 
-ClickStream.prototype._read = function( size ){
- this.push( this.createChunk(size) )
-}</code></pre>
+CharStream.prototype._read = function( size ){}</code></pre>
     </div>
 
     <div id="event-stream" class="step" data-x="3500" data-y="3300" data-rotate="90">
-      <h2>EventStream</h2>
+      <h2><a target="_blank" href="https://github.com/dominictarr/event-stream">EventStream</a></h2>
       <ul>
         <li>"a toolkit to make creating and working with streams easy"
         <li>a collection of user-land streams
@@ -248,7 +247,7 @@ ClickStream.prototype._read = function( size ){
     </div>
 
     <div id="highland" class="step" data-x="1500" data-y="3000" data-rotate="0">
-      <h2>Highland.js</h2>
+      <h2><a target="_blank" href="http://highlandjs.org">Highland.js</a></h2>
       <ul>
         <li>flow control at first
         <li>streams + functional programming
