@@ -231,10 +231,13 @@ CharStream.prototype._read = function( size ){}</code></pre>
       <pre><code>es.map(function (data, callback) {
   var result = data.replace( /(a|e|i|o|u)/gi , '')
   callback(null, result)
-})</code></pre>
+})
+// or even
+es.replace(/(a|e|i|o|u)/gi , '')
+</code></pre>
     </div>
 
-    <div id="event-stream-2" class="step" data-x="2500" data-y="3300" data-z="0" data-rotate="90">
+    <div id="event-stream-2" class="step" data-x="2450" data-y="3300" data-z="0" data-rotate="90">
       <h2>more generic</h2>
       <pre><code>es.through(function write(data) {
     this.emit('data', data.replace( /(a|e|i|o|u)/gi , ''))
@@ -259,7 +262,7 @@ CharStream.prototype._read = function( size ){}</code></pre>
     </div>
 
     <div id="highland-1" class="step" data-x="800" data-y="3500" data-z="100">
-      <h2>http log server?</h2>
+      <h2>higher order streams</h2>
       <pre><code>var s = hl('request', httpServer, ['req', 'res'])
 
 s.fork().pluck('req').map(hl)
@@ -292,10 +295,10 @@ streamIntsTill100
       <pre><code>var zeroLength = _.where({length: 0})
 var startWithHH = _.where({0: 'H', 1: 'H'})
 
-zeroLength( _(['', 'HH.js', function(){}, [], ]) )
-  .each(console.log)
-startWithHH( _(['Foobar', 'HH.js', ['H','H'], ]) )
-  .each(console.log)</code></pre>
+zeroLength( _( ['', 'HH.js', function(){}, [], ] ) )
+  .each(console.log) // does not log 'HH.js'
+startWithHH( _( ['Foobar', 'HH.js', ['H','H'], ] ) )
+  .each(console.log) // does not log 'Foobar'</code></pre>
     </div>
 
     <div id="awesome" class="step" data-x="3000" data-y="2000" data-z="5000" data-rotate="45">
