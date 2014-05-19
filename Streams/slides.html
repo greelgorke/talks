@@ -25,14 +25,13 @@
 
 
     <div class="step"  id="title" data-x="-200">
-      <h1>Streams in JS, Node.js and Browser</h1>
+      <h1>Streams in JS<br/>Node.js and Browser</h1>
     </div>
 
     <div id="greelgorke" class="step" data-x="0" data-y="500" data-scale="0.05">
-      <h2>greelgorke</h2>
+      <h2>Gregor Elke</h2>
       <ul>
-        <li>Gregor Elke</li>
-        <li>on twitter, github etc.</li>
+        <li>greelgorke on twitter, github etc.</li>
         <li>Node.js, Streams, Architecture Design</li>
         <li>working @ <a target="_blank" href="http://www.codecentric.de"><img alt="codecentric" src="../logo-codecentric.png"/></a></li>
       </ul>
@@ -84,7 +83,7 @@
       <ul>
     </div>
     <div id="seq-messages" class="step" data-x="1300" data-y="2000">
-        a sequence of <b>messages</b> distributed in time
+        a sequence of <b>messages</b> in time
 
     </div>
 
@@ -92,7 +91,7 @@
       <h2>Streams are versatile</h2>
       <ul>
         <li>memory control
-        <li>jit transformation
+        <li>just-in-time transformation
         <li>interface
         <li>flow control
       </ul>
@@ -120,7 +119,7 @@ devocalize._transform = function(chunk, enc, cb) {
   this.push(devoc)
   cb()
 }
-
+// "Hamburg" -> "Hmbrg"
 request.pipe(devocalize).pipe(response)</code></pre>
     </div>
 
@@ -131,6 +130,7 @@ request.pipe(devocalize).pipe(response)</code></pre>
 function Devocalize(args){
   Transform.call(this, args)
 }
+util.inherit(Devocalize, Transform)
 Devocalize.prototype._transform =
   function(chunk, enc, cb) {
     var devoc = chunk.toString()
@@ -155,8 +155,8 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
     return reqRes.req.method === 'POST'
   })
   .map(function(reqResPosts){
-    hl(reqRes.req)
-      .pipe(createWriteStream(reqRes.req.url))
+    reqRes.req
+      .pipe(writeFileStream(reqRes.req.url))
     return reqRes.res
   })
   .each(function(res){
@@ -171,14 +171,14 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
     return reqRes.req.method === 'GET'
   })
   .each(function(reqRes){
-    createReadStream(reqRes.req.url).pipe(reqRes.res)
+    fileReadStream(reqRes.req.url).pipe(reqRes.res)
   })</code></pre>
     </div>
 
     <div id="core" class="step" data-x="5000" data-y="1500" data-rotate="0">
-      <h2><a target="_blank" href="http://nodejs.org/api/stream.html">Node.js Core Streams</a></h2>
+      <h2><a target="_blank" href="http://nodejs.org/api/stream.html">Node.js Stream (v3)</a></h2>
       <ul>
-        <li>EventEmitter + Unix Pipes = Stream
+        <li>Messages + Unix Pipes = Stream
         <li>Readable Writable Duplex Transform
         <li>floating - paused
         <li><code>{objectMode:true}<code>
@@ -203,10 +203,10 @@ Dup.prototype._read = function( size ){
     </div>
 
     <div id="core-2" class="step" data-x="4800" data-y="2500" data-z="200" data-rotate="0">
-      <pre><code>function CharStream( elem ){
+      <pre><code>function CharStream( $elem ){
   Readable.call(this)
   var self = this
-  elem.on('keypress', function collect(event){
+  $elem.on('keypress', function collect(event){
     self.push(String.fromCharCode(event.which))
   }
 }
@@ -218,11 +218,11 @@ CharStream.prototype._read = function( size ){}</code></pre>
     <div id="event-stream" class="step" data-x="3500" data-y="3300" data-rotate="90">
       <h2><a target="_blank" href="https://github.com/dominictarr/event-stream">EventStream</a></h2>
       <ul>
-        <li>"a toolkit to make creating and working with streams easy"
         <li>a collection of user-land streams
+        <li>"a toolkit to make creating and working with streams easy"
         <li>create a stream from a function
-        <li>Streams are flow control
         <li>Streams are like Arrays but in time
+        <li>Streams are flow control
       </ul>
     </div>
 
@@ -252,10 +252,10 @@ es.replace(/(a|e|i|o|u)/gi , '')
     <div id="highland" class="step" data-x="1500" data-y="3000" data-rotate="0">
       <h2><a target="_blank" href="http://highlandjs.org">Highland.js</a></h2>
       <ul>
-        <li>flow control at first
         <li>streams + functional programming
-        <li>pull-based
-        <li>currying, lazyness
+        <li>flow control at first
+        <li>pull-based, lazyness
+        <li>currying, partial application
         <li>forking, mapping, pattern matching
         <li>higher order streams
       </ul>
@@ -274,7 +274,7 @@ s.fork().pluck('res').each(function(res){
     </div>
 
     <div id="highland-2" class="step" data-x="500" data-y="2750" data-z="200">
-      <h2>lazy counter</h2>
+      <h2>counter</h2>
       <pre><code>var count = 0
 var streamIntsTill100 = _(function (push, next) {
     count += 1
@@ -295,9 +295,9 @@ streamIntsTill100
       <pre><code>var zeroLength = _.where({length: 0})
 var startWithHH = _.where({0: 'H', 1: 'H'})
 
-zeroLength( _( ['', 'HH.js', function(){}, [], ] ) )
+zeroLength( _( ['', 'HH.js', function(){}, [] ] ) )
   .each(console.log) // does not log 'HH.js'
-startWithHH( _( ['Foobar', 'HH.js', ['H','H'], ] ) )
+startWithHH( _( ['Foobar', 'HH.js', ['H','H'] ] ) )
   .each(console.log) // does not log 'Foobar'</code></pre>
     </div>
 
