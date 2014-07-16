@@ -478,3 +478,23 @@ pre {
 #title i {
   font-size: smaller
 }
+
+.center {
+  text-align: center;
+}
+
+.step > img {
+  height: 80%;
+  width: 80%;
+}
+.step > a > img.bigger {
+  height: 100%;
+  width: 100%;
+}
+
+.step > p {
+  font-size: 0.9em;
+}
+.step > p.caption {
+  font-size: 0.25em;
+}

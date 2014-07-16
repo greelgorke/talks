@@ -24,20 +24,26 @@
 </div>
 
 
-    <div class="step"  id="title" data-x="-200">
+    <div class="step"  id="title">
       <h1>Streams in JS<br/>Node.js and Browser</h1>
     </div>
 
-    <div id="greelgorke" class="step" data-x="0" data-y="500" data-scale="0.05">
-      <h2>Gregor Elke</h2>
-      <ul>
-        <li>greelgorke on twitter, github etc.</li>
-        <li>Node.js, Streams, Architecture Design</li>
-        <li>working @ <a target="_blank" href="http://www.codecentric.de"><img alt="codecentric" src="../logo-codecentric.png"/></a></li>
-      </ul>
+    <div id="greelgorke1-web" class="step center" data-x="-2000" data-y="0">
+      <img src="../img/gregor_elke.JPG" />
+      <p><a href="http://greelgorke.tumblr.com/about" target="_blank">@greelgorke</a></p>
+      <p>Node.js - Streams - Architecture</p>
+    </div>
+    <div id="greelgorke2-nodehh" class="step center" data-x="-2000" data-y="-1500">
+      <a href="http://www.meetup.com/node-HH/" target="_blank">
+      <img src="../img/node-HH-avatar.png" />
+      </a>
+      <p>node.HH Organizer<p>
+    </div>
+    <div id="greelgorke3-cc" class="step center" data-x="-2000" data-y="-3000">
+      <a href="http://www.codecentric.de/" target="_blank"><img class="bigger" src="../img/cc_dunkelblau.png" /></a>
     </div>
 
-    <div id="agenda" class="step" data-y="1000">
+    <div id="agenda" class="step" data-y="-3000" data-x="0">
       <h2>Agenda</h2>
       <ol>
         <li>What is a Stream</li>
@@ -46,58 +52,122 @@
       </ol>
     </div>
 
-    <div id="what" class="step" data-x="1300" data-y="0" data-z="1000" data-scale="1">
+    <div id="what" class="step" data-x="0" data-y="-1500">
       <h2>What is a Stream?</h2>
     </div>
 
-    <div id="time-1" class="step" data-x="1000" data-y="200" data-z="-500" data-scale="1">
-        <center>data</center>
-    </div>
-    <div id="time-2" class="step" data-x="1200" data-y="200" data-z="-500" data-scale="1">
-        <center>distributed</center>
-    </div>
-    <div id="time-3" class="step" data-x="1440" data-y="200" data-z="-500" data-scale="1">
-        <center>in time</center>
-    </div>
-    <div id="pull" class="step" data-x="1300" data-y="-200" data-z="-800" data-scale="1">
-        <center>pull</center>
-    </div>
-    <div id="push" class="step" data-x="1500" data-y="-200" data-z="-300" data-scale="1">
-        <center>push</center>
-    </div>
-    <div id="backpressure" class="step" data-x="1100" data-y="-300" data-z="-200" data-scale="1">
-        <center>backpressure</center>
-    </div>
-    <div id="kinds-of" class="step" data-x="1300" data-y="300" data-z="-100" data-scale="1">
-        <center>read | both | write</center>
+    <div id="river1" class="step center" data-x="2000" data-y="-1500">
+      <h2>a stream?</h2>
+      <a target="_blank" href="https://commons.wikimedia.org/wiki/File:ElbeKM530.jpg#mediaviewer/Datei:ElbeKM530.jpg">
+        <img alt="ElbeKM530.jpg" src="../img/800px-ElbeKM530.jpg">
+      </a>
+      <p class="caption">„<a href="https://commons.wikimedia.org/wiki/File:ElbeKM530.jpg#mediaviewer/Datei:ElbeKM530.jpg">ElbeKM530</a>“ von <a href="//commons.wikimedia.org/wiki/User:Fice" title="User:Fice">Christian Fischer</a> - <span class="int-own-work">Eigenes Werk</span>. Location: North-eastern Lower Saxony, Germany.. Lizenziert unter <a title="Creative Commons Attribution-Share Alike 3.0" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.</p>
     </div>
 
-    <div id="stream-is" class="step" data-x="1300" data-y="1000" >
-      <h2>A Stream is</h2>
-      <ul>
-        <li>sequence of data distributed in time
-        <li>pull and/or push based
-        <li>backpressure
-        <li>producer, consumer or both
-        <li><code>src.pipe(dest)</code>
-      <ul>
+    <div id="stream-is" class="step center" data-x="2000" data-y="-2000" data-z="-100" data-scale="0.1">
+        sequence of data <b>distributed in time</b>
     </div>
-    <div id="seq-messages" class="step" data-x="1300" data-y="2000">
-        a sequence of <b>messages</b> in time
-
+    <div id="seq-messages" class="step center" data-x="2000" data-y="-2200" data-z="-100" data-scale="0.1">
+        sequence of <b>messages</b><br/>distributed in time
     </div>
 
-    <div id="versatile" class="step" data-x="3000" data-y="1000" data-rotate="-90">
+    <div id="spring" class="step center" data-x="2000" data-y="-2500" data-z="-100" data-scale="0.1">
+      <!-- <h2>readable</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:Spring_of_Labe_(Elbe).jpg#mediaviewer/Datei:Spring_of_Labe_(Elbe).jpg">
+        <img alt="Spring of Labe (Elbe).jpg" src="../img/432px-Spring_of_Labe_(Elbe).jpg">
+      </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:Spring_of_Labe_(Elbe).jpg#mediaviewer/Datei:Spring_of_Labe_(Elbe).jpg">Spring of Labe (Elbe)</a>“ von <a href="//commons.wikimedia.org/wiki/User:Antosh" title="User:Antosh">Antoni Pawłowski</a> - <span class="int-own-work">Eigenes Werk</span>. Lizenziert unter <a title="Creative Commons Attribution 3.0" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+    <div id="aperture" class="step center" data-x="2190" data-y="-2500" data-z="-50" data-scale="0.1">
+      <!-- <h2>writable</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:Germany_(1),_Elbe,_Trischen.jpg#mediaviewer/Datei:Germany_(1),_Elbe,_Trischen.jpg">
+        <img alt="Germany (1), Elbe, Trischen.jpg" src="../img/510px-Germany_(1),_Elbe,_Trischen.jpg">
+      </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:Germany_(1),_Elbe,_Trischen.jpg#mediaviewer/Datei:Germany_(1),_Elbe,_Trischen.jpg">Germany (1), Elbe, Trischen</a>“ von Vincent van Zeijst - <span class="int-own-work">Eigenes Werk</span>. Lizenziert unter <a title="Creative Commons Attribution-Share Alike 3.0" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+    <div id="river2" class="step center" data-x="2100" data-y="-2500" data-z="0" data-scale="0.1">
+      <!-- <h2>.pipe()</h2> -->
+      <a target="_blank" href="https://commons.wikimedia.org/wiki/File:ElbeKM530.jpg#mediaviewer/Datei:ElbeKM530.jpg">
+        <img alt="ElbeKM530.jpg" src="../img/800px-ElbeKM530.jpg">
+      </a>
+      <p class="caption">„<a href="https://commons.wikimedia.org/wiki/File:ElbeKM530.jpg#mediaviewer/Datei:ElbeKM530.jpg">ElbeKM530</a>“ von <a href="//commons.wikimedia.org/wiki/User:Fice" title="User:Fice">Christian Fischer</a> - <span class="int-own-work">Eigenes Werk</span>. Location: North-eastern Lower Saxony, Germany.. Lizenziert unter <a title="Creative Commons Attribution-Share Alike 3.0" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.</p>
+    </div>
+
+    <div id="metaphore" class="step center" data-x="2100" data-y="-3000" data-scale="0.5">
+        <h2>metaphors</h2>
+    </div>
+
+
+    <div id="well" class="step center" data-x="3000" data-y="-3000">
+      <!-- <h2>just pull</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG#mediaviewer/Datei:ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG">
+        <img alt="ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG" src="../img/800px-ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG">
+      </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG#mediaviewer/Datei:ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711.JPG">ZiehbrunnenFreilichtmuseumKlockenhagenFotoAndreKaiser200711</a>“ von Foto Andre Kaiser - Archiv Andre Kaiser. Lizenziert unter Public domain über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+    <div id="watertap" class="step center" data-x="4500" data-y="-3000">
+      <!-- <h2>push + pause</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:Drehbarer_Wasserhahn.jpg#mediaviewer/Datei:Drehbarer_Wasserhahn.jpg">
+        <img alt="Drehbarer Wasserhahn.jpg" src="../img/800px-Drehbarer_Wasserhahn.jpg">
+      </a>
+      <p class="caption">
+       „<a href="https://commons.wikimedia.org/wiki/File:Drehbarer_Wasserhahn.jpg#mediaviewer/Datei:Drehbarer_Wasserhahn.jpg">Drehbarer Wasserhahn</a>“ von <a href="//de.wikipedia.org/wiki/User:Riki1979" class="extiw" title="de:User:Riki1979">Riki1979</a> at <a class="external text" href="http://de.wikipedia.org">de.wikipedia</a> - <span class="int-own-work">Eigenes Werk</span> (Original-Bildunterschrift: “<span class="description" lang="">Selbst fotografiert</span>”).
+       <br/>Transferred from <a class="external text" href="http://de.wikipedia.org">de.wikipedia</a> to Commons by <a href="//commons.wikimedia.org/wiki/User:Wdwd" title="User:Wdwd">User:Wdwd</a> using <a rel="nofollow" class="external text" href="http://tools.wikimedia.de/~magnus/commonshelper.php">CommonsHelper</a>.. Lizenziert unter Public domain über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+    <div id="toilet" class="step center" data-x="6000" data-y="-3000">
+      <!-- <h2>writable - /dev/null</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:McGuiresPensacolaAug2008Terlet.jpg#mediaviewer/Datei:McGuiresPensacolaAug2008Terlet.jpg">
+        <img alt="McGuiresPensacolaAug2008Terlet.jpg" src="../img/576px-McGuiresPensacolaAug2008Terlet.jpg">
+      </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:McGuiresPensacolaAug2008Terlet.jpg#mediaviewer/Datei:McGuiresPensacolaAug2008Terlet.jpg">McGuiresPensacolaAug2008Terlet</a>“ von Infrogmation of New Orleans - Photo by <a href="//commons.wikimedia.org/wiki/User:Infrogmation" title="User:Infrogmation">Infrogmation</a>. Lizenziert unter <a title="Creative Commons Attribution-Share Alike 3.0" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+
+    <div id="space" class="step center" data-x="6000" data-y="-1500">
+      <!-- <h2>pipe, again</h2> -->
+      <a href="https://commons.wikimedia.org/wiki/File:Accretion_disk.jpg#mediaviewer/Datei:Accretion_disk.jpg">
+        <img alt="Accretion disk.jpg" src="../img/750px-Accretion_disk.jpg">
+      </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:Accretion_disk.jpg#mediaviewer/Datei:Accretion_disk.jpg">Accretion disk</a>“. Lizenziert unter Public domain über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+    <div id="powerplant" class="step center" data-x="4500" data-y="-1500">
+      <!-- <h2>transform</h2> -->
+        <a href="https://commons.wikimedia.org/wiki/File:Grand_Coulee_Dam.jpg#mediaviewer/Datei:Grand_Coulee_Dam.jpg">
+          <img alt="Grand Coulee Dam.jpg" src="../img/745px-Grand_Coulee_Dam.jpg">
+        </a>
+      <p class="caption">
+        „<a href="https://commons.wikimedia.org/wiki/File:Grand_Coulee_Dam.jpg#mediaviewer/Datei:Grand_Coulee_Dam.jpg">Grand Coulee Dam</a>“ von U.S. Bureau of Reclamation - <a rel="nofollow" class="external free" href="http://users.owt.com/chubbard/gcdam/html/photos/exteriors.html">http://users.owt.com/chubbard/gcdam/html/photos/exteriors.html</a>. Lizenziert unter Public domain über <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.
+      </p>
+    </div>
+
+
+    <div id="versatile" class="step" data-x="6000" data-y="500" >
       <h2>Streams are versatile</h2>
       <ul>
         <li>memory control
-        <li>just-in-time transformation
+        <li>on-the-fly transformation
         <li>interface
         <li>flow control
       </ul>
     </div>
 
-    <div id="mem-control" class="step" data-x="2800" data-y="1700" data-z="-250" data-rotate="-90"  data-scale="0.5">
+    <div id="mem-control" class="step" data-x="5300" data-y="200" data-z="-250" data-scale="0.5">
       <h2>Memory Control</h2>
       <pre><code>var fileStream = fs.createReadStream(filename)
 fileStream.on('readable', function(){
@@ -109,13 +179,14 @@ fileStream.on('readable', function(){
 fileStream.pipe(response)</code></pre>
     </div>
 
-    <div id="jit-trans" class="step" data-x="3000" data-y="500" data-z="-300" data-rotate="-90"  data-scale="0.5">
-      <h2>JIT-Transformation</h2>
+    <div id="jit-trans" class="step" data-x="6400" data-y="200" data-z="-300" data-scale="0.5">
+      <h2>On-the-fly Transform</h2>
       <pre><code>var devocalize = new stream.Transform()
+var vocals = /(a|e|i|o|u)/gi
 
 devocalize._transform = function(chunk, enc, cb) {
   var devoc = chunk.toString()
-              .replace( /(a|e|i|o|u)/gi , '')
+              .replace( vocals , '')
   this.push(devoc)
   cb()
 }
@@ -123,7 +194,7 @@ devocalize._transform = function(chunk, enc, cb) {
 request.pipe(devocalize).pipe(response)</code></pre>
     </div>
 
-    <div id="interface" class="step" data-x="3300" data-y="1700" data-z="-350" data-rotate="-90"  data-scale="0.5">
+    <div id="interface" class="step" data-x="5300" data-y="700" data-z="-350" data-scale="0.5">
       <h2>Module Interface</h2>
       <pre><code>module.exports = Devocalize
 
@@ -133,23 +204,20 @@ function Devocalize(args){
 util.inherit(Devocalize, Transform)
 Devocalize.prototype._transform =
   function(chunk, enc, cb) {
-    var devoc = chunk.toString()
-                .replace( /(a|e|i|o|u)/gi , '')
-    this.push(devoc)
-    cb()
+    // as before
   }
 //---
 request.pipe(new Devocalize()).pipe(response)</code></pre>
     </div>
 
-    <div id="flow-1" class="step" data-x="3300" data-y="500" data-z="-100" data-rotate="-90">
+    <div id="flow-1" class="step" data-x="6400" data-y="700" data-z="-100">
       <h2>Flow Control</h2>
       <pre><code>var hl = require('highland')
 
 var server = hl('request', httpServer, ['req', 'res'])</code></pre>
     </div>
 
-    <div id="flow-2" class="step" data-x="3757" data-y="100" data-z="-100" data-rotate="-90" data-rotate-x="15">
+    <div id="flow-2" class="step" data-x="6757" data-y="1150" data-z="-100" data-rotate-y="15">
       <pre><code>server.fork()
   .filter(function(reqRes){
     return reqRes.req.method === 'POST'
@@ -165,7 +233,7 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
   })</code></pre>
     </div>
 
-    <div id="flow-3" class="step" data-x="3650" data-y="900" data-z="-100" data-rotate="-90" data-rotate-x="-15">
+    <div id="flow-3" class="step" data-x="5950" data-y="1045" data-z="-100" data-rotate-y="-15">
       <pre><code>server.fork()
   .filter(function(reqRes){
     return reqRes.req.method === 'GET'
@@ -175,7 +243,7 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
   })</code></pre>
     </div>
 
-    <div id="core" class="step" data-x="5000" data-y="1500" data-rotate="0">
+    <div id="core" class="step" data-x="4000" data-y="1000" data-rotate="0">
       <h2><a target="_blank" href="http://nodejs.org/api/stream.html">Node.js Stream (v3)</a></h2>
       <ul>
         <li>Messages + Unix Pipes = Stream
@@ -186,7 +254,7 @@ var server = hl('request', httpServer, ['req', 'res'])</code></pre>
       </ul>
     </div>
 
-    <div id="core-1" class="step" data-x="5500" data-y="2000" data-z="100"data-rotate="0">
+    <div id="core-1" class="step" data-x="4000" data-y="500" data-z="100"data-rotate="0">
       <pre><code>function Dup( ){
   Duplex.call(this)
 }
@@ -202,7 +270,7 @@ Dup.prototype._read = function( size ){
 }</code></pre>
     </div>
 
-    <div id="core-2" class="step" data-x="4800" data-y="2500" data-z="200" data-rotate="0">
+    <div id="core-2" class="step" data-x="3000" data-y="500" data-z="200" data-rotate="0">
       <pre><code>function CharStream( $elem ){
   Readable.call(this)
   var self = this
@@ -215,7 +283,7 @@ util.inherits(CharStream, Readable)
 CharStream.prototype._read = function( size ){}</code></pre>
     </div>
 
-    <div id="event-stream" class="step" data-x="3500" data-y="3300" data-rotate="90">
+    <div id="event-stream" class="step" data-x="3500" data-y="2300" data-rotate="90">
       <h2><a target="_blank" href="https://github.com/dominictarr/event-stream">EventStream</a></h2>
       <ul>
         <li>a collection of user-land streams
@@ -226,7 +294,7 @@ CharStream.prototype._read = function( size ){}</code></pre>
       </ul>
     </div>
 
-    <div id="event-stream-1" class="step" data-x="2950" data-y="3500" data-z="250"data-rotate="90">
+    <div id="event-stream-1" class="step" data-x="2950" data-y="2500" data-z="250"data-rotate="90">
       <h2>remember devocalize?</h2>
       <pre><code>es.map(function (data, callback) {
   var result = data.replace( /(a|e|i|o|u)/gi , '')
@@ -237,10 +305,12 @@ es.replace(/(a|e|i|o|u)/gi , '')
 </code></pre>
     </div>
 
-    <div id="event-stream-2" class="step" data-x="2450" data-y="3300" data-z="0" data-rotate="90">
+    <div id="event-stream-2" class="step" data-x="2400" data-y="2300" data-z="0" data-rotate="90">
       <h2>more generic</h2>
       <pre><code>es.through(function write(data) {
-    this.emit('data', data.replace( /(a|e|i|o|u)/gi , ''))
+    this.emit('data',
+              data.replace( /(a|e|i|o|u)/gi , '')
+             )
     //this.pause()
   },
   function end () { //optional
@@ -249,32 +319,33 @@ es.replace(/(a|e|i|o|u)/gi , '')
       <i>push based but with pause/resume</i>
     </div>
 
-    <div id="highland" class="step" data-x="1500" data-y="3000" data-rotate="0">
+    <div id="highland" class="step" data-x="1000" data-y="2000" data-rotate="0">
       <h2><a target="_blank" href="http://highlandjs.org">Highland.js</a></h2>
       <ul>
         <li>streams + functional programming
         <li>flow control at first
-        <li>pull-based, lazyness
-        <li>currying, partial application
+        <li>pull-based + lazy
+        <li>curry + partial application
         <li>forking, mapping, pattern matching
         <li>higher order streams
       </ul>
     </div>
 
-    <div id="highland-1" class="step" data-x="800" data-y="3500" data-z="100">
+    <div id="highland-1" class="step" data-x="300" data-y="2500" data-z="100">
       <h2>higher order streams</h2>
       <pre><code>var s = hl('request', httpServer, ['req', 'res'])
 
 s.fork().pluck('req').map(hl)
   .sequence().pipe(process.stdout)
+
 s.fork().pluck('res').each(function(res){
   res.writeHead(200)
   res.end('Success!')
 })</code></pre>
     </div>
 
-    <div id="highland-2" class="step" data-x="500" data-y="2750" data-z="200">
-      <h2>counter</h2>
+    <div id="highland-2" class="step" data-x="0" data-y="1750" data-z="200">
+      <h2>construct + errors</h2>
       <pre><code>var count = 0
 var streamIntsTill100 = _(function (push, next) {
     count += 1
@@ -290,7 +361,7 @@ streamIntsTill100
   .toArray(console.log)</code></pre>
     </div>
 
-    <div id="highland-3" class="step" data-x="0" data-y="2000" data-z="300">
+    <div id="highland-3" class="step" data-x="0" data-y="1000" data-z="300">
       <h2>pattern matching and curry</h2>
       <pre><code>var zeroLength = _.where({length: 0})
 var startWithHH = _.where({0: 'H', 1: 'H'})
@@ -301,14 +372,11 @@ startWithHH( _( ['Foobar', 'HH.js', ['H','H'] ] ) )
   .each(console.log) // does not log 'Foobar'</code></pre>
     </div>
 
-    <div id="awesome" class="step" data-x="3000" data-y="2000" data-z="5000" data-rotate="45">
+    <div id="awesome" class="step" data-x="1700" data-y="200" data-z="5000" data-rotate="45">
       <h1>Use streams you must! They are awesome!</h1>
     </div>
     <div id="qa" class="step" data-x="2000" data-y="-500" data-z="1500" data-scale="7">
       <h1>Thank you! Questions?<h1>
-    </div>
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
-      Questions?
     </div>
   </div>
 <!--script src="https://raw.githubusercontent.com/bartaz/impress.js/master/js/impress.js"></script-->
