@@ -1,186 +1,207 @@
 Title
 ---
 
-* hi and welcome
-* my name is Gregor Elke
-* i'm glad to be here and talk about one of my favorite topics: Streams.
-* especially in node.js, also applies in browsers
+* hi!
+* my name is Gregor Elke, i'm from Hamburg
+* thank you for having me here
+* today i gonna talk about Streams
+* especially in node.js, but you can use them in browsers too
 
-* if i'm too quite or lost you, raise your hand
+* if you have questions please ask right away
 ---
 * i'm greelgorke on the internet
-* love to work on and talk about
-* working at codecentric
-* awesome because they help me to be here
+* i love to work on and talk about Node.js, Streams and Software Architecture
+---
+* i'm the organizer of the node.js user group in Hamburg
+---
+* i'm working at codecentric
+* and that's cool, because there i can do all the stuff full time
+* and you can join me.
 ---
 Agenda
 ---
-* I want to talk about what is a stream in general
-* about how they can be used
-* and at last I show you 3 libraries I know about and find useful
-
-* but first
-* __ask__: who knows or have used streams? may be in other languages?
-* __ask__: what is a stream?
-* __go through cloud__
+* first we need to understand what a stream is
+* then we'll see how they can be used
+* at last I'll show you 3 libraries I know about and find useful
 ---
 
-Stream is
----
-* abstraction of sequence of data distributed in time
-  * which is potentially infinite
-  * an array on the other side is data in space/memory
-* when we think about streams we have to ask
-  * can we pull data out of it or will the stream push data at us, which implies different implementations of consumer code
-  * do we have to deal with backpressure, fast producers and slow cosumers?
-* because streams are really producers, consumers or both which
-  * are often glued, or we say piped, together. pipe allows chaining
-* mostly we think "binary data", when someone say stream
----
-* but in javascript a stream is a sequence of messages or events
-  * a message can hold any type of value
-* this is why js streams are versatile
+* but first let me ask you
+* have you worked with streams already?
+* what is a stream? any metaphor?
 
 ---
-Versatile Streams
+* my first metaphor was a river. obviously this is a stream right?
+* this is Elbe in lower Saxony
 ---
-* you can use streams for
-* memory control, which is a most common use case
-* just in time transformations allow you to work on parts of the data as they come
-* you can use stream as interfaces to your modules and create very composable systems
-* at last streams are flow control tools, of course, we don't call them streams for nothing
-* let's see some examples
-  * you don't have to understand all the details here and now. we can talk about the examples afterwards
+* a stream as we imagine it in JS is
+  * a sequence of data distributed in time
+  * and potentially infinite
 ---
+* or i'm used to think: sequence of messages
+* we can't represent something distributed in time properly, time is to abstract.
+* but with an indirection:
+---
+* we need a producer, or we say a 'readable'
+* this is the spring of elbe
+---
+* then, we need a consumer, or 'writable'
+* this is the aperture of elbe
+---
+* and the river in between we would call a 'pipe'
+* so we represent streams as producers and consumers and use pipes between them
+* as we have producers and consumers, we need to solve typical problems:
+* backpressure and buffering
+* and the tools handle this differently, but luckily they do
+---
+* let me show a few metaphors
+---
+* this is a pull-based readable
+---
+* this is a push-based readable with pause/resume function
+---
+* this is a typical writable
+* ever piped something to /dev/null
+---
+* another pipe example
+---
+* what is this?
+* what is 'data' here?
+* this a transform stream: elevation energy to electric energy
+* transforms are important! we'll see in a moment, why.
+---
+* how can we use streams?
+* typically for memory usage control
+* on the fly transformation of data
+* unified interface! (think about unix pipes for the moment)
+* flow control
+* examples!!
+
+------
 Memory Control
 ---
-* here is how a stream can be consumed in Node
-* typical case of reading and processing a file
-* pull-based, wait for 'readable' event, decide when and how much to read
-* here we read till the internal buffer is empty and process it. then we wait for the next event
+* here is how you can consume a readable in Node, a file stream in this case
+* wait for 'readable' message, then pull the data as you want
 * the 'end'-event would mark EOF, but not shown here
-* another way to consume is to pipe it to a writable stream
+* another, often better way to consume is to pipe the readable to a writable
 ---
-JIT-Transforms
+On-The-Fly Transforms
 ---
 * It is a simple Transform stream
+* a Duplex Stream is a both: readable and writeable
 * Transform is a special-case Duplex, where output depends on the input
-* typically use it in a pipe chain
 * this one removes all vocals from the input-data
-* so if the request has "Hamburg" as data, Devocalise would push "Hmbrg" to the response
+* use them in pipe chains
+* here if the request has "Hamburg" as data, "Hmbrg" would land in the response
 ---
 Module Interface
 ---
-* In node ideally we create one-function modules, extend this paradigm to one-stream-module
-* export a stream, a stream constructor or an init function which returns a stream
-* this case shows a stream constructor
-* btw. second way of implementing a core stream. later more
+* In node ideally we create one-function modules.
+* Extend this paradigm to one-stream-module
+* export a stream, a stream constructor or an init function with a stream as result
+* in this example the stream constructor is exported
+* btw. this is the official way to implement a core stream. later more
 ---
 Flow Control
 ---
-* use streams for flow control
-  * here i use highland, because it's better suited for flow control
-  * you don't need to understand it entirely
-* a http server could be a stream of req-res-pairs
-* let's make it one
+* Streams can remove the need for flow control tools
+  * here i use highland.js, because it's better suited for flow control
+  * you don't need to understand it entirely, yet
+* here is the idea: a http server is basically a stream of req-res-pairs
+* so let's make it one
 * every emitter of events can be wrapped in a stream
 ---
 * what happens here:
-* with fork() we create different branches of the stream which shares backpressure control
-* in this branch we want to handle with POST only
+* with fork() we create different branches with shared backpressure control
+* in this branch we want to deal with POST only so we filter for them
 * we do our thing with the request and
-  * push the res object further
-* filter and map produce new streams from the old ones
+  * push only the res object further
+* filter and map functions produce new streams from the old ones
 * in each we terminate the http request by sending out a 201
 ---
-* now to the second branch
-* this is simpler, same game as before
-  * fork another branch, filter it for GET
+* the second branch is simpler, but same game as before
+  * fork and filter for GET
   * and send out a file for each url
-* a simple file server
-* we will see more, when i talk about highland
+* this is a simple file server
+* you see transforms are everywhere, they are the cool ones
 * now let's look at the tools, starting with
 ---
-Core
+Node.js Core Streams (version 3)
 ---
-* idea here is:
-  * take sequence of messages
+* idea here is: Take the Unix Pipes as example
+  * create a unified interface + format
   * define an event-based protokoll (data, end, readable, drain)
-  * and implement it in a handy method
-  * so Streams are special EventEmitters with a .pipe() method
+  * and wrap it in a handy method (pipe)
+  * Node streams are special event emitters with the pipe method
 * there are 4 abstract blueprints, which implement the hard low-level stuff
   * such as handling of backpressure, buffering etc.
-  * so we as implementor can concentrate on on our stuff, by implementing 1-2 simple(r) methods
-* Readable comes with 2 modes (Stream 3), push/pull, paused by default
+  * so we can concentrate on our stuff.
+* Readable comes with 2 modes (Stream 3), basically push and pull, paused by default
 * primarily streams were meant for binary data, object mode makes them true message streams
-* On npm you can find "readable-stream" module, wich is a mirror of the core api. use with browserify & co
+* On npm you can find this api as module called "readable-stream", which can be used in browser
 ---
-* Simple Duplex example
-* Constructor Call
-* write + cb
-* read + push
-* ._write, ._read called by internals on demand
+* we've seen a transform already, here is a simple Duplex example
+* inherit, call the super constructor
+* implement *_write* and *_read*
+* ._write, ._read are called by internals on demand
 ---
 * Simple example for browser
 * wrapping a jQuery element into a Readable stream of characters
-* nothing to do in _read, push only stream
-* pausing may be implemented by buffering or dropping events
+* nothing to do in *_read* here  
 ---
 EventStream
 ---
 * created by Dominic Tarr
-* created with Streams1 API (node 0.8) in mind as a better api
+* created with Streams1 API (node 0.8) in mind as a better option
 * basic idea: custom streams should be
   * as easy to create as functions and
   * as easy to manipulate as arrays
 * it's the mindset that streams are like arrays and streams are flow control tool
-* Event stream brings many ready-to-use transforms with it
-* also tools for merge-ing, split-ing and join-ing
-* but most important: through and map as core
+* the important thing: the main building block of this lib is through, a transform
+* Event-Stream brings many ready-to-use transforms with it, more on npm
+* examples!
 ---
 * remember devocalize stream in core?
 * it's practically a one-liner now
-* even more compact with .replace
+* even more compact with the replace stream
 ---
-* here is an example of .through implementation
-* generic transform stream.
-* though-streams are push based, but can be paused and resumed
-* many other through-based streams on npm
+* this is how you implement a stream with through
+* though-streams are push based, with pause/resume
+* now we're getting functional
 ---
 Highland.js
 ---
-* now it's getting functional
-* made by Caolan McMahon, async, nodeunit, he's a hoodie fellow
-  * highland want to be a replacement for async and underscore
-  * flow control at first in mind, combining functional paradigm with streams
-* pull-based and lazy evaluated
+* made by Caolan McMahon, creator of async, nodeunit and member of the hoodie team
+  * with flow control at first in mind, it combines functional programming paradigm with streams
+  * highland want to be a replacement for tools like async and underscore
+* Highland streams are pull-based and lazy evaluated
   * that means: nothing happens in the stream chain until a terminator functions is called
   * terminators are so called thunk-generators (each, toArray, pipe, collect, resume)
 * you can curry and partially apply highland functions
-* we've seen fork and map before
 * you can apply pattern matching on streams
 * highland handles higher order streams, streams of streams
-* compatible with node core streams: pipe, pause, resume
+* highland maintians compatibility with node core streams
+* examples!
 ---
-* a simple log receiver, http server
-* we've seen forking and filtering on HTTP-methods
-* here fork and split the stream to substreams with pluck
-* higher order stream: stream of req
-* sequence flattens, the next pipe puts data from each req to stdout
+* a simple http server, that receives and saves log entries
+* in the example before we've seen forking and filtering on HTTP-methods
+* here we fork and split the stream to substreams with pluck
+* to get a stream of req objets, which are also streams
+* the sequence method flattens the streams, the next pipe puts data from each req to stdout
 * second fork is just for making http happy
 ---
-* counter stream created from a function
-* you can push values with the push-function, with next you signal that your async process is done
-* error propagation through highland in the pipe
-  * no extra channel, but you can use .errors() and .stopOnError() functions to handle them
-  * if errors are not handled and hit a thunck-method, then they will be thrown
+* here you can see a counter stream created from a function
+* anything special here? not really? there is this push(error)
+* highland streams propagate errors through the pipe
+  * no extra channel, but you can use .errors() and .stopOnError() functions to extract them
+  * if errors are not handled and hit a thunk-method, then they will be thrown
 ---
 * with last example i want to show you pattern matching and currying
-  * practially every function in highland is curry-able
+  * almost every function in highland is curry-able
   * curryied stream has a transform function but no source, which is added later
 * also you can see, that you can create streams from arrays (it's underscore replacement, right?)
 * .where() filters values on a pattern passed to it
 * This is Highland.js. There are many more functions and features in the lib, check it out
+* here is my last advice:
 ---
 Streams are awesome!
 ---

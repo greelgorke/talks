@@ -3,7 +3,7 @@
 <head>
   <title>Streams in JS, Node.js and Browser</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+  <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" /> -->
   <link href="../impress-style.css" rel="stylesheet" />
   <link rel="stylesheet" href="../highlight/styles/idea.css">
 <!--
@@ -185,8 +185,7 @@ fileStream.pipe(response)</code></pre>
 var vocals = /(a|e|i|o|u)/gi
 
 devocalize._transform = function(chunk, enc, cb) {
-  var devoc = chunk.toString()
-              .replace( vocals , '')
+  var devoc = chunk.toString().replace( vocals , '')
   this.push(devoc)
   cb()
 }
