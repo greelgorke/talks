@@ -59,7 +59,7 @@
 
 <div class="mod-note">
   - daneben organisiere ich die Hamburger Node.js User Group
-  - wer interesse hat, kann uns über meetup.com finden.
+  - wer Interesse hat, kann uns über meetup.com finden.
 </div>
     </div>
 
@@ -160,28 +160,28 @@
   - aber für mich ist interessanter zu sehen: was kann ich damit tun
   - wie kann ich es einsetzen.
   - ich versuche mich jetzt zuerst an einer unvollständigen Abgrenzung zu klassischer SOA
-  - weil ich es für hifreich halte um zu verstehen, warum µServices überhaupt einen eigenen Namen tragen.
+  - weil ich es für hilfreich halte um zu verstehen, warum µServices überhaupt einen eigenen Namen tragen.
 </div>
 </div>
 
 <div class="step"  id="micro-soa-fokus" data-x="4000" data-y="4000">
   <h3>µServices vs. Services</h3>
   <h2>Fokus</h2>
-  <p>integration vs. dekomposition</p>
+  <p>Integration vs. Dekomposition</p>
 <div class="mod-note">
-  - µServices haben grundsetzlich eine andere Zielsetzung als ein klassischer WebService nach SOA
-  - in klassischem SOA versuchen wir monolithische Applikationen in eine Systemlandschaft zu intergrieren
+  - µServices haben grundsätzlich eine andere Zielsetzung als ein klassischer WebService nach SOA
+  - in klassischem SOA versuchen wir monolithische Applikationen in eine Systemlandschaft zu integrieren
   - oftmals kapselt ein klassischer SOA-Service eine Systemkomponente mit einem definierten Set technischer Verantwortlichkeiten
   - z.B. ein DataStore, eine BI Unit, ein Discovery Service etc.
-  - Das Ziel ist, einzelne Dienste in einem Gesammtprozess systemweit verfügbar zu machen.
+  - Das Ziel ist, einzelne Dienste in einem Gesamtprozess systemweit verfügbar zu machen.
   - Strukturierung der Systemlandschaft steht im Fokus.
   - Ein Microservice hat dagegen das Ziel der Entkopplung der Applikationskomponenten.
   - Dabei wird die Anwendung in Komponenten zerlegt, die unabhängig von einander lauffähig sind.
   - Es geht hierbei nicht um Wiederverwendung. Im Gegenteil. Selbst wenn die Komponenten technisch entkoppelt sind,
-    sind sie es logisch nicht. die Gesammtanwendung würde ohne einzelne dieser µServices zwar lauffähig sein, aber nicht unbedingt Ihren zweck erfüllen
+    sind sie es logisch nicht. die Gesamtanwendung würde ohne einzelne dieser µServices zwar lauffähig sein, aber nicht unbedingt Ihren zweck erfüllen
     was aber ok ist.
-  - Der Fokus der µServices liegt in der Reduktion der Komplexität der einzelenen Komponenten
-  - Die These hierbei ist: kleine, entkoppelte Komponenten lassen sich schneller entwickeln, leicheter warten und problemloser ersetzen
+  - Der Fokus der µServices liegt in der Reduktion der Komplexität der einzelnen Komponenten
+  - Die These hierbei ist: kleine, entkoppelte Komponenten lassen sich schneller entwickeln, leichter warten und problemloser ersetzen
   - Dieser Unterschied im Fokus ist wichtig.
 </div>
 </div>
@@ -189,26 +189,26 @@
 <div class="step"  id="micro-soa-teilung" data-x="4000" data-y="6000">
   <h3>µServices vs. Services</h3>
   <h2>Einteilung</h2>
-  <p>stories vs. abteilungen</p>
+  <p>Stories vs. Abteilungen</p>
 <div class="mod-note">
   - Wie bereits erwähnt streben SOA-Architekturen eine Integration an. Dabei wird oft infrastrukturell gedacht und oftmals vorhandenen Dienste als Boxen angesehen
   - Die Einteilung der einzelnen Services wird dabei an den Grenzen dieser Boxen gezogen.
   - Der Fachliche Besitzer der Box, der oftmals eine Abteilung ist, spielt eine wichtige Rolle.
   - Das Ergebnis ist dann oft ein Netzwerk aus in sich monolithischen Gebilden, eine Silo Area.
-  - Ein µService dagegen hat als Primäraufgabe, die komplexität der Komponenten zu reduzieren und die Komponenten voneinander zu entkoppeln.
+  - Ein µService dagegen hat als Primäraufgabe, die Komplexität der Komponenten zu reduzieren und die Komponenten voneinander zu entkoppeln.
   - Dies wird oftmals dadurch erreicht, dass ein µService jeweils eine Fachliche Anforderung im Sinne einer agilen UserStory oder eines Use Cases abbildet
   - Dabei wird eine Komponentengröße nicht in physischen Metriken wie LoC oder Classes gemessen
   - Sondern in kognitiven bzw. organisatorischen wie z.B.
     "handhabbar durch ein kleines Team" oder "Begreifbar mit wenigen Seiten Code".
   - die 100 LoC Regel zielt eben auch auf das Kognitive ab. Kurzer Code ist einfacher zu verstehen.
-  - Die verantwortung für ein Microservice hat das Entwicklerteam allein.
-  - Nach Conways Law spiegeln systemarchitekturen die Organisationen, die sie bauen.
-  - µService-basierte architekturen sind sehr Flexibel, so sind es auch die Organisation, die sie erschaffen
+  - Die Verantwortung für ein Microservice hat das Entwicklerteam allein.
+  - Nach Conways Law spiegeln Systemarchitekturen die Organisationen, die sie bauen.
+  - µService-basierte Architekturen sind sehr flexibel, so sind es auch die Organisation, die sie erschaffen
   - weil die Verantwortlichkeiten sehr feingranular auf Teams und nicht Abteilungen verteilt sind. Und kleine Teams sind anpassungsfähiger als Abteilungen.
-  - Daher kann das streben nach µService-Architektur auch eure Organisation verändern.
+  - Daher kann das Streben nach µService-Architektur auch eure Organisation verändern.
   - Als Leitlinien für die einteilung, das schneiden der Services, halte ich übrigens die Prinzipien SR und SoC für sehr wichtig.
-  - Wenn wir unsere Applikationen so scheiden entstehen Services, die sehr kleine Verantwortlichkeien haben z.B. Ausliefern semi-statischer Inhalte,
-    Nutzerauthetifizierung, Ausliefern eines Suchergebnisses.
+  - Wenn wir unsere Applikationen so scheiden entstehen Services, die sehr kleine Verantwortlichkeiten haben z.B. Ausliefern semi-statischer Inhalte,
+    Nutzerauthentifizierung, Ausliefern eines Suchergebnisses.
   - Dann haben diese Komponenten nur wenige Endpoints, oftmals nur einen, und hängen von nur wenigen weiteren Services ab, und lassen sich
     besser und einfacher isolieren.
 </div>
@@ -221,11 +221,11 @@
 <div class="mod-note">
   - Als dritten Aspekt hier möchte ich die Kommunikationsmuster erwähnen.
   - wer denkt bei SOA an ESB? SOAP? XML?
-  - das sind oft mittel der Wahl in klassischen SOA Landschaften. RESTful ist immernoch sehr neu.
-  - µServices nutzen, und sie müssen es aufgrund ihrer größe und ihrem fokus, leichtgewichtigere Formen.
+  - das sind oft mittel der Wahl in klassischen SOA Landschaften. RESTful ist immer noch sehr neu.
+  - µServices nutzen, und sie müssen es Aufgrund ihrer Größe und ihrem Fokus, leichtgewichtigere Formen.
   - REST und verstärkt Message Queues, mit JSON-formatierten Nachrichten.
   - µServices kommunizieren meistens asynchron
-  - Gemeinsamm jedoch haben beide Servicearten, dass sie einen Kontrakt haben, der die Schnittstellen und das Nachrichtenformat definiert.
+  - Gemeinsam jedoch haben beide Servicearten, dass sie einen Kontrakt haben, der die Schnittstellen und das Nachrichtenformat definiert.
 </div>
 </div>
 
@@ -244,7 +244,7 @@
   - Mit µServices versucht man jedoch die Schwächen in der Entwicklung monolithischer Anwendungen zu beseitigen.
   - Anstatt einzelne Funktionalität immer wieder neu in eine monolithische Plattform zu integrieren, können µServices entkoppelt vom Rest des Systems entwickelt und ausgerollt werden.
   - Sie können jederzeit angepasst und in beliebiger Sprache neu geschrieben werden.
-  - Sie können unabhängig vom Rest der Applikation beobachtet und skalliert werden.
+  - Sie können unabhängig vom Rest der Applikation beobachtet und skaliert werden.
   - ein kleines Team ist in der Lage direkt dafür Verantwortung zu tragen, das dieses Teilsystem lebt.
 </div>
 </div>
@@ -261,17 +261,17 @@
 <div class="mod-note">
   - Doch wie man sich denken kann, ist das Gras hier nur teilweise grüner, auch µServices kommen mit einem Preisschild
   - Das wichtigste ist: Die Komplexität der einzelnen Komponenten wird zum Preis der Kompexität der Infrastruktur reduziert
-    Statt ein Paket in ein AppServer zu deployen, muss man nun mehrere kleinstapplikationen verwalten, überwachen, ausrollen und skallieren
+    Statt ein Paket in ein AppServer zu deployen, muss man nun mehrere Kleinstapplikationen verwalten, überwachen, ausrollen und skalieren
     Das stellt ganz andere Anforderungen an den Betrieb, und man kommt um das Thema DevOps eigentlich nicht herum
   - Die Entwicklungsprozesse spielen eine entscheidende Rolle. µServices kamen zuerst dort auf, wo kleine Teams
-    zu weiten Teilen autonom und entkoppelt agieren. Teams verantworten den gesammten Lebenszyklus eines Services, von Konzeption bis Betrieb.
+    zu weiten Teilen autonom und entkoppelt agieren. Teams verantworten den gesamten Lebenszyklus eines Services, von Konzeption bis Betrieb.
     Womit wir wieder bei DevOps sind.
   - Ein berechtigter Einwand gegen µServices, ist die mangelhafte Toolunterstütztung. Kaum ein modernes Tool unterstützt debugging von verteilten Systemen.
     Unsere IDEs sind auf Monolithen oder nur wenige Services ausgelegt. Doch die Tool-Unterstützung ist nur eine Frage der Zeit, wie ich glaube.
-    Und maches, was wir im Monolithen debuggen würden, müssen wir bei µServices nicht mehr, weil sie so einfach sind.
-  - Die Latenz dagegen, wird immer bleiben. Die Laufzeit-Charakteristik eines in-prozess Methodenaufrufs ist sicherlich sehr anders
+    Und manches, was wir im Monolithen debuggen würden, müssen wir bei µServices nicht mehr, weil sie so einfach sind.
+  - Die Latenz dagegen, wird immer bleiben. Die Laufzeit-Charakteristik eines im-prozess-Methodenaufrufs ist sicherlich sehr anders
     als ein asynchroner Nachrichtenaustausch über Entfernung.
-    Eine Netzwerkverbindung kann viel eher kaputgehen und zu Fehlern führen. Man muss ständig mit einem Fehlschlag rechnen.
+    Eine Netzwerkverbindung kann viel eher kaputtgehen und zu Fehlern führen. Man muss ständig mit einem Fehlschlag rechnen.
   - Erstaunlicherweise ist genau diese Einschränkung, die zum positiven Effekt führt, dass µService-Basierte Anwendungen
     in der Regel resistenter gegen Ausfälle sind. Wir rechnen mit dem Schlimmsten und sorgen vor.
   - Und durch asynchrone Kommunikation machen wir keine Annahmen darüber wie schnell eine Antwort kommt.
@@ -285,7 +285,7 @@
 
 <div class="mod-note">
   - Mehr zu Microservices als Stil und die Varianten dessen möchte ich hier nicht sagen. Details könnt ihr z.B. auf dieser
-    webseite finden. Sie bildet einen guten Einstieg.
+    Webseite finden. Sie bildet einen guten Einstieg.
 </div>
 </div>
 
@@ -303,10 +303,10 @@
   - was macht ein Muster aus, was muss es haben um als solches zu gelten?
   - Ein Muster ist eine Struktur, eine Blaupause, die fest ist, entweder via Standarditisierung oder Konvention
   - Es wird als Grundlage für Reproduktion genutzt
-  - Man kann durch Anwendung bestimmter Taxonomien Muster in scheinbar unterschiedlichen Instanzen wiedererkennen
+  - Man kann durch Anwendung bestimmter Taxonomien Muster in scheinbar unterschiedlichen Instanzen wieder erkennen
   - Und weil wir alle Design Patterns kennen, oder auch nur davon gehört haben, schätzen wir die gemeinsame und konsistente Namensgebung,
     die Muster mit sich bringen.
-  - dem Microservice Begriff fehlt allerdings noch die Struktur, es gibt noch keine algemein akzeptierte.
+  - dem Microservice Begriff fehlt allerdings noch die Struktur, es gibt noch keine allgemein akzeptierte.
 </div>
 </div>
 
@@ -321,7 +321,7 @@
 
 <div class="mod-note">
   - Wir könnten nun versuchen alle möglichen Spielarten zu untersuchen und alle Gemeinsamkeiten herausstellen und Konsens zu finden.
-  - Oder wir versuchen den kleinsten gemeinsammen Nenner zu finden und daraus ein Muster abzuleiten.
+  - Oder wir versuchen den kleinsten gemeinsamen Nenner zu finden und daraus ein Muster abzuleiten.
   - Ich glaube das zweite führt eher zu Brauchbarem, und das habe ich versucht.
   - Es gibt inzwischen einige Versuche den Begriff zu greifen, durch namhafte Akteure und weniger bekannte Anwender.
     Ich konzentrierte mich auf nur wenige.
@@ -342,20 +342,20 @@
   </ul>
 
 <div class="mod-note">
-  - Aus der Fülle von informellen Definitionen, Statements und Beschreibungen habe ich für mich diese Eigenschften herausgepickt.
-  - Zuallererst sind es autonome Einheiten, die für sich allein laufen können, ihre Ressourcen selbst aquirieren oder mitbringen.
+  - Aus der Fülle von informellen Definitionen, Statements und Beschreibungen habe ich für mich diese Eigenschaften herausgepickt.
+  - Zuallererst sind es autonome Einheiten, die für sich allein laufen können, ihre Ressourcen selbst akquirieren oder mitbringen.
   - Sie stellen Dienste bereit, genauer: einen Dienst. Eine einzige fachliche Verantwortung. Das ist mein Größendenominator.
   - Sie sind über Nachrichten gekoppelt, was die loseste Kopplung ermöglich, die noch Sinn macht.
   - Um dem ganzen noch zu helfen, muss diese Kopplung über asynchrone Kanäle passieren. Idealerweise gepuffert, z.B. mittels Message Queues
-  - Und die Services müssen schnell austauschbar sein, solange sie dem vereinbarrten Schnittstellenkontrakt genügen.
+  - Und die Services müssen schnell austauschbar sein, solange sie dem vereinbarten Schnittstellenkontrakt genügen.
   - Mit schnell austauschbar meine ich, innerhalb weniger Tage mit kleinem Team neu entwickelt, gebaut und ausgerollt werden zu können.
   - Ich muss µServices beliebig kombinieren können.
-  - Alle diese Punkte zielen darauf eine sehr flexibile Architektur zu entwickeln, die schnelles Wachstum und einfaches Ändern der Applikation erlaubt.
+  - Alle diese Punkte zielen darauf eine sehr flexible Architektur zu entwickeln, die schnelles Wachstum und einfaches Ändern der Applikation erlaubt.
   - Ich kann heute nicht sagen, wie meine Anwendung in ein-drei Monaten aussehen muss, um die Lastanforderungen zu erfüllen, neue Features zu integrieren
     und sich meinen organisatorischen Begebenheiten anpassen zu lassen
 
   - als ich am Herausarbeiten dieser Punkte war, kam es mir immer bekannter vor. In sich abgeschlossene Einheiten, ein festgelegtes
-    einheitliches kommunikationsmuster, austauschbar und ersetzbar, klein und konzentriert auf eine sache...
+    einheitliches Kommunikationsmuster, austauschbar und ersetzbar, klein und konzentriert auf eine Sache...
 </div>
 </div>
 
@@ -372,7 +372,7 @@
 <div class="mod-note">
   - Die Unix Philosophie ist schon recht alt, und gilt als eine der Erfolgsmodelle.
   - Wer schon mal auch nur eine Pipe benutzt hat, hat von dieser Philosophie profitiert.
-  - Unix programme sind kleine Werkzeuge die meist mit Standardinput und output arbeiten und sich mit Pipes kombinieren lassen
+  - Unix Programme sind kleine Werkzeuge die meist mit Standardinput und output arbeiten und sich mit Pipes kombinieren lassen
   - Unix Pipes kann man als primitive Nachrichtenkanäle ansehen, Unix Domain Sockets sind Nachrichtenquellen und Nachrichtenempfänger.
 </div>
 </div>
@@ -439,9 +439,9 @@ module.exports = function( readable, resolve ){
     - es seine Abhängigkeiten abstrakt hinter Streams gekapselt erwartet
     - grundsätzlich Asynchronität voraussetzt
     - und keine sonstigen Annahmen über die Umgebung trifft
-    kann ich sehr spät entscheiden, ob ich eine microservicebasierte Architektur anwenden will oder nicht.
+    kann ich sehr spät entscheiden, ob ich eine Microservice-basierte Architektur anwenden will oder nicht.
   - Meine Module schreibe ich somit immer so, als ob es Microservices sind, wie eben definiert.
-  - Wie könnte nun der Code aussehen, der den Service letztlcih einbindet?
+  - Wie könnte nun der Code aussehen, der den Service letztlich einbindet?
 </div>
 </div>
 
@@ -496,15 +496,15 @@ myMicro(process.stdin, resolveFunc)
     <li>roll your own</li>
   </ul>
 <div class="mod-note">
-  - wie service letztlich eingbunden ist, verkommt so zu einem Implementierungsdetail, das man in ein Tool wegkapseln kann.
+  - wie Service letztlich eingebunden ist, verkommt so zu einem Implementierungsdetail, das man in ein Tool wegkapseln kann.
   - Erst hier, beginnt µService als Muster für mich sinn zu machen.
   - Es gibt auf NPM bereits Module, die einem dieses Vorgehen erleichtern können
   - Die, die Einbindung sogar teilweise zu einem Konfiguratinsdetail machen.
-  - z.B. nodezoo ist eine microservice-basierte Anwendung entwickelt mit Seneca.
-  - in Seneca wurde ein etwas anderer Implementierungsansatz gewählt, statt mit Streams wird hier mit einem RPC ansatz gearbeitet
-  - doch von der Idee her ist hier ähnlich: abstrahiere Periferie definiere deine services als ein set von event-handlern
-  - dnode ist RPC über Streams. Auch hier lassen sich schnell microservices einbinden. dnode brint ein eigenes protokoll.
-  - express mounted apps, sind ein weiterer ansatz, wenn man bei http und rest bleiben will.
+  - z.B. nodezoo ist eine Microservice-basierte Anwendung entwickelt mit Seneca.
+  - in Seneca wurde ein etwas anderer Implementierungsansatz gewählt, statt mit Streams wird hier mit einem RPC Ansatz gearbeitet
+  - doch von der Idee her ist hier ähnlich: abstrahiere Peripherie definiere deine services als ein set von event-handlern
+  - dnode ist RPC über Streams. Auch hier lassen sich schnell Microservices einbinden. dnode brint ein eigenes Protokoll mit.
+  - Expressjs mounted apps, sind ein weiterer Ansatz, wenn man bei HTPP und REST bleiben will.
   - Doch zugegeben, es gibt noch einiges zu tun.
 </div>
 </div>
@@ -539,7 +539,7 @@ myMicro(process.stdin, resolveFunc)
       <li>Totale Entkopplung</li>
     </ul>
 <div class="mod-note">
-  - Eine einheit, die ihre sämtliche Periferie abstrahiert, die Abhängigkeiten entkoppelt und sich auf ein Use Case konzentriert?
+  - Eine einheit, die ihre sämtliche Peripherie abstrahiert, die Abhängigkeiten entkoppelt und sich auf ein Use Case konzentriert?
   - Oncle Bob hat uns von Interactoren, Boundaries und Gateways erzählt.
   - Und weil es Oncle Bob war, haben ihm einige zugehört. Und was draus gemacht. Es lohnt sich hier nachzuforschen.
 </div>
@@ -549,11 +549,9 @@ myMicro(process.stdin, resolveFunc)
     <h3>µService ist ein Denkmuster</h3>
 
 <div class="mod-note">
-  - hier ist der knick in meiner linse. Microservices sind für mich in erster linie eine Denkschule
-  - Wie teile ich mein produkt in dienste ein? wie organisiere ich meine organisation, wie gehe ich mit kommunikation,
-    änderungen, support, betrieb etcetcetc um.
-
-  CHECK TIME!!!
+  - hier ist der Knick in meiner Linse. Microservices sind für mich in erster Linie eine Denkschule
+  - Wie teile ich mein Produkt in Dienste ein? Wie strukturiere ich meine Organisation, wie gehe ich mit Kommunikation,
+    Änderungen, Support, Betrieb etcetcetc um.
 </div>
 </div>
 
@@ -562,9 +560,8 @@ myMicro(process.stdin, resolveFunc)
     <p>"aber Gregor, was ist mit?"</p>
 <div class="mod-note">
 - Bonusrunde! Lasst uns den ernst etwas fahren lassen
-- Das spiel ist einfach: einer ruft ein aber raus, "aber Gregor, was ist mit?" und ich versuche mich nicht alzu blamieren
+- Das spiel ist einfach: einer ruft ein aber raus, "aber Gregor, was ist mit?" und ich versuche mich nicht allzu blamieren
   und darauf einzugehen.
-- zurück auf /fazit
 </div>
 </div>
 
