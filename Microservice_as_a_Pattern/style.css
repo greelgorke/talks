@@ -89,7 +89,7 @@ body {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
 
-    background: rgb(225,225,225);
+    background: #F5F5F5;
     /*background: rgb(242,244,245);*/
 }
 
@@ -103,7 +103,7 @@ i, em { font-style: italic }
     ... and give links a nice look.
 */
 a {
-    color: inherit;
+    color: #88C043;
     text-decoration: none;
     padding: 0 0.1em;
     background: inherit
@@ -164,7 +164,7 @@ a:focus {
 
 .step {
     position: relative;
-    width: 900px;
+    width: 1000px;
     padding: 40px;
     margin: 20px auto;
 
@@ -177,7 +177,7 @@ a:focus {
     font-family: 'PT Serif', georgia, serif;
     font-size: 48px;
     line-height: 1.5;
-    color:rgb(88,88,90);
+    color:#404238;
 }
 
 /*
@@ -213,7 +213,7 @@ a:focus {
     height: 700px;
     padding: 40px 60px;
 
-    background-color: white;
+    background: white;
     border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
@@ -441,7 +441,7 @@ h1 {
 }
 
 h2 {
-  color: rgb(31,48,128);
+  color: inherit;
   font-style: italic;
 }
 
@@ -460,7 +460,7 @@ ul > li {
 
 ul > li:before {
   content: "»  ";
-  color: rgb(31,48,128);
+  color: #88C043;
 }
 
 li > img {
@@ -483,23 +483,6 @@ pre {
   text-align: center;
 }
 
-.step > img {
-  height: 80%;
-  width: 80%;
-}
-.step > a > img.bigger {
-  height: 100%;
-  width: 100%;
-}
-
-.step > p {
-  font-size: 0.9em;
-}
-.step > p.caption {
-  font-size: 0.25em;
-}
-
-
 .hex:after {
   content:"\2B22";
   color:#88C043;
@@ -514,4 +497,22 @@ pre {
   line-height:0;
   padding-top:100px;
   opacity: 0.2;
+}
+
+.nodehh {
+  background: url(../../Pictures/node-hh/node-HH-avatar-B06-2.png) scroll no-repeat center center;
+  height: 700px;
+}
+
+.smaller {
+  font-size:smaller;
+}
+
+.mod-note {
+  display:none;
+}
+
+img.fill {
+  width:50%;
+  height:50%
 }

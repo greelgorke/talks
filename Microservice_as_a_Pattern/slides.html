@@ -1,0 +1,634 @@
+<!doctype html>
+<html>
+<head>
+  <title>Microservice as a Pattern</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" /> -->
+  <link href="style.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="highlight/styles/idea.css">
+  <script src="highlight/highlight.pack.js"></script>
+</head>
+<body>
+  <div id="impress">
+
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+
+    <div class="step center"  id="title" data-x="0">
+      <h1>Microservice as a Pattern</h1>
+      <p>by Gregor Elke</p>
+
+<div class="mod-note">
+  - Hallo und Willkommen!
+  - Danke fürs kommen!
+  - Als erstes möchte ich mich vorstellen
+</div>
+    </div>
+
+    <div class="step center"  id="me" data-y="2000">
+      <img src="gregor_elke.JPG" alt="" class="fill"/>
+      <h3>Gregor Elke</h3>
+      <h3>@greelgorke</h3>
+
+<div class="mod-note">
+  Ich bin Gregor Elke
+  Im Internet, vor allem auf twitter und github bin ich @greelgorke
+</div>
+    </div>
+
+    <div class="step center"  id="codecentric" data-y="4000">
+      <img src="cc_dunkelblau.png" alt="" class=""/>
+      <h3>JavaScript - Node.js</h3>
+      <h3>Leichtgewichtige Architekturen</h3>
+      <h3>Reactive Apps</h3>
+
+<div class="mod-note">
+  - ich bin IT-Berater und Entwickler bei der codecentric
+    wir haben einen Stand, zwischendurch kann man mich dort auch treffen
+  - bei der codecentric verfolge ich vor allem die Themen JavaScript und speziell Node.js,
+  - ich interessiere mich für leichtgewichtige, verteilte Softwarearchitekturen
+    und reactive Anwendungen.
+</div>
+    </div>
+    <div class="step center"  id="node-hh" data-y="6000">
+      <img src="node-HH-avatar.png" alt="" class=""/>
+      <h3>meetup.com/node-hh</h3>
+
+<div class="mod-note">
+  - daneben organisiere ich die Hamburger Node.js User Group
+  - wer interesse hat, kann uns über meetup.com finden.
+</div>
+    </div>
+
+    <div class="step"  id="agenda" data-x="2000" data-y="6000">
+      <h3>Agenda</h3>
+      <ul>
+        <li>Was sind µServices</li>
+        <li>Essenz als Muster</li>
+        <li>früh Entscheiden - spät Umsetzen</li>
+        <li>Hilfe der Altvorderen</li>
+      </ul>
+<div class="mod-note">
+  - Aber heute geht es hier eher weniger um Node.js sondern um Microservices als Muster.
+    Und darum, wie man dieses Muster so einsetzt, dass es uns hilft, ohne unbedingt Services zu bauen
+  - Wer ist hier wegen
+    dem Track JavaScript? Oder Node.js? Etwas davon habe ich auch.
+    Wegen Microservice?
+  - es wird von allem etwas geben, aber vor allem:
+</div>
+    </div>
+
+    <div class="step"  id="alter-wein" data-x="2000" data-y="4000">
+      <h3>Disclaimer!</h3>
+      <p>alter Wein in neuen Flaschen voraus!</p>
+<div class="mod-note">
+  - Einiges an altem Wein in neuen Flaschen.
+  - Ja Flaschen! Wir haben 2014, nicht wahr :) ?
+</div>
+    </div>
+
+    <div class="step"  id="alter-wein-ok" data-x="2000" data-y="2000">
+      <h3>Alter Wein ist O.K.</h3>
+<div class="mod-note">
+  - Aber das ist OK.
+  - Alter Wein ist meistens ein guter
+</div>
+    </div>
+
+    <div class="step"  id="auge-trinkt-mit" data-x="2000" data-y="0">
+      <h3>Das Auge trinkt mit</h3>
+<div class="mod-note">
+  - Und das Auge trinkt bekanntlich mit
+</div>
+    </div>
+
+    <div class="step"  id="wir-machens-eh" data-x="2000" data-y="-2000">
+      <h3>Es ist, was wir tun</h3>
+<div class="mod-note">
+  - Und das ist eh das, was die meisten von uns jeden tag machen:
+  - Alten Wein in neue Flaschen abfüllen.
+</div>
+    </div>
+
+    <div class="step"  id="micro" data-x="4000" data-y="-2000">
+      <h3>Was sind µServices?</h3>
+<div class="mod-note">
+  - Was sind eigentlich Microservices?
+  - nun es gibt keine einheitliche Definition, aber viele Meinungen.
+  - Lasst mich euch einen kurzen unkommentierten Eindruck gewähren:
+</div>
+    </div>
+
+    <div class="step"  id="" data-x="4000" data-y="0">
+      <quote>
+        Just SOA
+      </quote>
+    </div>
+    <div class="step center"  id="" data-x="4000" data-y="100">
+      <quote>
+        2-Pizza-Teams
+      </quote>
+    </div>
+    <div class="step"  id="" data-x="4000" data-y="200">
+      <quote>
+        An architectural style
+      </quote>
+    </div>
+    <div class="step center"  id="" data-x="4000" data-y="300">
+      <quote>
+        An App in 10-100 LoC
+      </quote>
+    </div>
+    <div class="step center"  id="" data-x="4000" data-y="400">
+      <quote>
+        An independent component that can be rewritten in one week.
+      </quote>
+    </div>
+<div class="step"  id="micro-sind" data-x="4000" data-y="2000">
+  <h3>µServices sind</h3>
+  <ul>
+    <li>SOA, aber anders</li>
+    <li>klein, aber nicht wegen der Größe</li>
+    <li>ein Stil, und bald ein Muster</li>
+  </ul>
+<div class="mod-note">
+  - diese Aussagen stimmen alle irgendwo und irgendwie
+  - Es wird noch viel geredet und geschrieben, ich bin auch hier.
+  - aber für mich ist interessanter zu sehen: was kann ich damit tun
+  - wie kann ich es einsetzen.
+  - ich versuche mich jetzt zuerst an einer unvollständigen Abgrenzung zu klassischer SOA
+  - weil ich es für hifreich halte um zu verstehen, warum µServices überhaupt einen eigenen Namen tragen.
+</div>
+</div>
+
+<div class="step"  id="micro-soa-fokus" data-x="4000" data-y="4000">
+  <h3>µServices vs. Services</h3>
+  <h2>Fokus</h2>
+  <p>integration vs. dekomposition</p>
+<div class="mod-note">
+  - µServices haben grundsetzlich eine andere Zielsetzung als ein klassischer WebService nach SOA
+  - in klassischem SOA versuchen wir monolithische Applikationen in eine Systemlandschaft zu intergrieren
+  - oftmals kapselt ein klassischer SOA-Service eine Systemkomponente mit einem definierten Set technischer Verantwortlichkeiten
+  - z.B. ein DataStore, eine BI Unit, ein Discovery Service etc.
+  - Das Ziel ist, einzelne Dienste in einem Gesammtprozess systemweit verfügbar zu machen.
+  - Strukturierung der Systemlandschaft steht im Fokus.
+  - Ein Microservice hat dagegen das Ziel der Entkopplung der Applikationskomponenten.
+  - Dabei wird die Anwendung in Komponenten zerlegt, die unabhängig von einander lauffähig sind.
+  - Es geht hierbei nicht um Wiederverwendung. Im Gegenteil. Selbst wenn die Komponenten technisch entkoppelt sind,
+    sind sie es logisch nicht. die Gesammtanwendung würde ohne einzelne dieser µServices zwar lauffähig sein, aber nicht unbedingt Ihren zweck erfüllen
+    was aber ok ist.
+  - Der Fokus der µServices liegt in der Reduktion der Komplexität der einzelenen Komponenten
+  - Die These hierbei ist: kleine, entkoppelte Komponenten lassen sich schneller entwickeln, leicheter warten und problemloser ersetzen
+  - Dieser Unterschied im Fokus ist wichtig.
+</div>
+</div>
+
+<div class="step"  id="micro-soa-teilung" data-x="4000" data-y="6000">
+  <h3>µServices vs. Services</h3>
+  <h2>Einteilung</h2>
+  <p>stories vs. abteilungen</p>
+<div class="mod-note">
+  - Wie bereits erwähnt streben SOA-Architekturen eine Integration an. Dabei wird oft infrastrukturell gedacht und oftmals vorhandenen Dienste als Boxen angesehen
+  - Die Einteilung der einzelnen Services wird dabei an den Grenzen dieser Boxen gezogen.
+  - Der Fachliche Besitzer der Box, der oftmals eine Abteilung ist, spielt eine wichtige Rolle.
+  - Das Ergebnis ist dann oft ein Netzwerk aus in sich monolithischen Gebilden, eine Silo Area.
+  - Ein µService dagegen hat als Primäraufgabe, die komplexität der Komponenten zu reduzieren und die Komponenten voneinander zu entkoppeln.
+  - Dies wird oftmals dadurch erreicht, dass ein µService jeweils eine Fachliche Anforderung im Sinne einer agilen UserStory oder eines Use Cases abbildet
+  - Dabei wird eine Komponentengröße nicht in physischen Metriken wie LoC oder Classes gemessen
+  - Sondern in kognitiven bzw. organisatorischen wie z.B.
+    "handhabbar durch ein kleines Team" oder "Begreifbar mit wenigen Seiten Code".
+  - die 100 LoC Regel zielt eben auch auf das Kognitive ab. Kurzer Code ist einfacher zu verstehen.
+  - Die verantwortung für ein Microservice hat das Entwicklerteam allein.
+  - Nach Conways Law spiegeln systemarchitekturen die Organisationen, die sie bauen.
+  - µService-basierte architekturen sind sehr Flexibel, so sind es auch die Organisation, die sie erschaffen
+  - weil die Verantwortlichkeiten sehr feingranular auf Teams und nicht Abteilungen verteilt sind. Und kleine Teams sind anpassungsfähiger als Abteilungen.
+  - Daher kann das streben nach µService-Architektur auch eure Organisation verändern.
+  - Als Leitlinien für die einteilung, das schneiden der Services, halte ich übrigens die Prinzipien SR und SoC für sehr wichtig.
+  - Wenn wir unsere Applikationen so scheiden entstehen Services, die sehr kleine Verantwortlichkeien haben z.B. Ausliefern semi-statischer Inhalte,
+    Nutzerauthetifizierung, Ausliefern eines Suchergebnisses.
+  - Dann haben diese Komponenten nur wenige Endpoints, oftmals nur einen, und hängen von nur wenigen weiteren Services ab, und lassen sich
+    besser und einfacher isolieren.
+</div>
+</div>
+
+<div class="step"  id="micro-soa-com" data-x="4000" data-y="8000">
+  <h3>µServices vs. Services</h3>
+  <h2>Kommunikation</h2>
+  <p>MQ vs ESB</p>
+<div class="mod-note">
+  - Als dritten Aspekt hier möchte ich die Kommunikationsmuster erwähnen.
+  - wer denkt bei SOA an ESB? SOAP? XML?
+  - das sind oft mittel der Wahl in klassischen SOA Landschaften. RESTful ist immernoch sehr neu.
+  - µServices nutzen, und sie müssen es aufgrund ihrer größe und ihrem fokus, leichtgewichtigere Formen.
+  - REST und verstärkt Message Queues, mit JSON-formatierten Nachrichten.
+  - µServices kommunizieren meistens asynchron
+  - Gemeinsamm jedoch haben beide Servicearten, dass sie einen Kontrakt haben, der die Schnittstellen und das Nachrichtenformat definiert.
+</div>
+</div>
+
+<div class="step"  id="micro-mono" data-x="6000" data-y="8000">
+  <h3>µServices vs. Monolithen</h3>
+  <ul>
+    <li>Entkopplung</li>
+    <li>Autonomie</li>
+    <li>Async</li>
+    <li>Messaging</li>
+  </ul>
+
+<div class="mod-note">
+  - die µServices sind jedoch nicht der "Natürliche Feind" von WebServices oder SOA, sondern von monolithischen Architekturen
+    Wir können µServices in klassische SOA-Landschaften integrieren
+  - Mit µServices versucht man jedoch die Schwächen in der Entwicklung monolithischer Anwendungen zu beseitigen.
+  - Anstatt einzelne Funktionalität immer wieder neu in eine monolithische Plattform zu integrieren, können µServices entkoppelt vom Rest des Systems entwickelt und ausgerollt werden.
+  - Sie können jederzeit angepasst und in beliebiger Sprache neu geschrieben werden.
+  - Sie können unabhängig vom Rest der Applikation beobachtet und skalliert werden.
+  - ein kleines Team ist in der Lage direkt dafür Verantwortung zu tragen, das dieses Teilsystem lebt.
+</div>
+</div>
+
+<div class="step"  id="micro-minus" data-x="6000" data-y="6000">
+  <h3>µServices vs. Monolithen</h3>
+  <ul>
+    <li>Infrastruktur</li>
+    <li>Entwicklungsprozesse</li>
+    <li>Tools</li>
+    <li>Latenz und Partition</li>
+  </ul>
+
+<div class="mod-note">
+  - Doch wie man sich denken kann, ist das Gras hier nur teilweise grüner, auch µServices kommen mit einem Preisschild
+  - Das wichtigste ist: Die Komplexität der einzelnen Komponenten wird zum Preis der Kompexität der Infrastruktur reduziert
+    Statt ein Paket in ein AppServer zu deployen, muss man nun mehrere kleinstapplikationen verwalten, überwachen, ausrollen und skallieren
+    Das stellt ganz andere Anforderungen an den Betrieb, und man kommt um das Thema DevOps eigentlich nicht herum
+  - Die Entwicklungsprozesse spielen eine entscheidende Rolle. µServices kamen zuerst dort auf, wo kleine Teams
+    zu weiten Teilen autonom und entkoppelt agieren. Teams verantworten den gesammten Lebenszyklus eines Services, von Konzeption bis Betrieb.
+    Womit wir wieder bei DevOps sind.
+  - Ein berechtigter Einwand gegen µServices, ist die mangelhafte Toolunterstütztung. Kaum ein modernes Tool unterstützt debugging von verteilten Systemen.
+    Unsere IDEs sind auf Monolithen oder nur wenige Services ausgelegt. Doch die Tool-Unterstützung ist nur eine Frage der Zeit, wie ich glaube.
+    Und maches, was wir im Monolithen debuggen würden, müssen wir bei µServices nicht mehr, weil sie so einfach sind.
+  - Die Latenz dagegen, wird immer bleiben. Die Laufzeit-Charakteristik eines in-prozess Methodenaufrufs ist sicherlich sehr anders
+    als ein asynchroner Nachrichtenaustausch über Entfernung.
+    Eine Netzwerkverbindung kann viel eher kaputgehen und zu Fehlern führen. Man muss ständig mit einem Fehlschlag rechnen.
+  - Erstaunlicherweise ist genau diese Einschränkung, die zum positiven Effekt führt, dass µService-Basierte Anwendungen
+    in der Regel resistenter gegen Ausfälle sind. Wir rechnen mit dem Schlimmsten und sorgen vor.
+  - Und durch asynchrone Kommunikation machen wir keine Annahmen darüber wie schnell eine Antwort kommt.
+    Erst wenn Latenz wirklich wichtig wird, müssen wir aktiv werden und optimieren.
+</div>
+</div>
+
+<div class="step"  id="micro-mehr" data-x="6000" data-y="4000">
+  <h3>Mehr zu µServices</h3>
+  <h2>http://microservices.io</h2>
+
+<div class="mod-note">
+  - Mehr zu Microservices als Stil und die Varianten dessen möchte ich hier nicht sagen. Details könnt ihr z.B. auf dieser
+    webseite finden. Sie bildet einen guten Einstieg.
+</div>
+</div>
+
+<div class="step"  id="muster" data-x="6000" data-y="2000">
+  <h3>Muster</h3>
+  <ul>
+    <li>gleichbleibende Struktur</li>
+    <li>erlaubt gleichförmige Wiederholung</li>
+    <li>kann in verschiedenen Instanzen erkannt werden</li>
+    <li>Bonus: benennt ein Konzept</li>
+  </ul>
+
+<div class="mod-note">
+  - Stattdessen möchte ich µServices als Muster betrachten.
+  - was macht ein Muster aus, was muss es haben um als solches zu gelten?
+  - Ein Muster ist eine Struktur, eine Blaupause, die fest ist, entweder via Standarditisierung oder Konvention
+  - Es wird als Grundlage für Reproduktion genutzt
+  - Man kann durch Anwendung bestimmter Taxonomien Muster in scheinbar unterschiedlichen Instanzen wiedererkennen
+  - Und weil wir alle Design Patterns kennen, oder auch nur davon gehört haben, schätzen wir die gemeinsame und konsistente Namensgebung,
+    die Muster mit sich bringen.
+  - dem Microservice Begriff fehlt allerdings noch die Struktur, es gibt noch keine algemein akzeptierte.
+</div>
+</div>
+
+<div class="step"  id="micro-muster" data-x="6000" data-y="0">
+  <h3>µService als Muster</h3>
+  <ul>
+    <li>viele Spielarten, wenig Konsens</li>
+    <li>gemeinsamer Nenner</li>
+    <li>alter Wein, neue Flaschen</li>
+    <li>Node.js flavor</li>
+  </ul>
+
+<div class="mod-note">
+  - Wir könnten nun versuchen alle möglichen Spielarten zu untersuchen und alle Gemeinsamkeiten herausstellen und Konsens zu finden.
+  - Oder wir versuchen den kleinsten gemeinsammen Nenner zu finden und daraus ein Muster abzuleiten.
+  - Ich glaube das zweite führt eher zu Brauchbarem, und das habe ich versucht.
+  - Es gibt inzwischen einige Versuche den Begriff zu greifen, durch namhafte Akteure und weniger bekannte Anwender.
+    Ich konzentrierte mich auf nur wenige.
+  - Und zusätzlich dazu bin ich überzeugt, dass die aktuellen µServices ganz sicher alte Paradigmen Muster und Prinzipien wiederverwerten.
+  - Wir versuchen sozusagen, den alten Wein zu erkennen und diesen in die neue Flasche zu füllen.
+  - Und da ich aus der Node.js Ecke komme, habe ich ein Prise Node Gewürz hinzugenommen.
+</div>
+</div>
+
+<div class="step slide"  id="micro-def" data-x="8000" data-y="0">
+  <h3>µService Definition</h3>
+  <ul>
+    <li>autonome isolierte Einheiten</li>
+    <li>Single Responsibility</li>
+    <li>Nachrichten-basierte Kopplung</li>
+    <li>Asynchrone Schnittstellen</li>
+    <li>schnell ersetzbar, beliebig kombinierbar</li>
+  </ul>
+
+<div class="mod-note">
+  - Aus der Fülle von informellen Definitionen, Statements und Beschreibungen habe ich für mich diese Eigenschften herausgepickt.
+  - Zuallererst sind es autonome Einheiten, die für sich allein laufen können, ihre Ressourcen selbst aquirieren oder mitbringen.
+  - Sie stellen Dienste bereit, genauer: einen Dienst. Eine einzige fachliche Verantwortung. Das ist mein Größendenominator.
+  - Sie sind über Nachrichten gekoppelt, was die loseste Kopplung ermöglich, die noch Sinn macht.
+  - Um dem ganzen noch zu helfen, muss diese Kopplung über asynchrone Kanäle passieren. Idealerweise gepuffert, z.B. mittels Message Queues
+  - Und die Services müssen schnell austauschbar sein, solange sie dem vereinbarrten Schnittstellenkontrakt genügen.
+  - Mit schnell austauschbar meine ich, innerhalb weniger Tage mit kleinem Team neu entwickelt, gebaut und ausgerollt werden zu können.
+  - Ich muss µServices beliebig kombinieren können.
+  - Alle diese Punkte zielen darauf eine sehr flexibile Architektur zu entwickeln, die schnelles Wachstum und einfaches Ändern der Applikation erlaubt.
+  - Ich kann heute nicht sagen, wie meine Anwendung in ein-drei Monaten aussehen muss, um die Lastanforderungen zu erfüllen, neue Features zu integrieren
+    und sich meinen organisatorischen Begebenheiten anpassen zu lassen
+
+  - als ich am Herausarbeiten dieser Punkte war, kam es mir immer bekannter vor. In sich abgeschlossene Einheiten, ein festgelegtes
+    einheitliches kommunikationsmuster, austauschbar und ersetzbar, klein und konzentriert auf eine sache...
+</div>
+</div>
+
+<div class="step"  id="unix" data-x="8000" data-y="2000">
+  <h3>Unix Philosophy</h3>
+  <i>Schreibe Computerprogramme so, dass sie</i>
+  <ul>
+    <li>nur eine Aufgabe erledigen und diese gut machen.</li>
+    <li>sie zusammenarbeiten.</li>
+    <li>Textströme verarbeiten, denn das ist eine universelle Schnittstelle.</li>
+
+  </ul>
+
+<div class="mod-note">
+  - Die Unix Philosophie ist schon recht alt, und gilt als eine der Erfolgsmodelle.
+  - Wer schon mal auch nur eine Pipe benutzt hat, hat von dieser Philosophie profitiert.
+  - Unix programme sind kleine Werkzeuge die meist mit Standardinput und output arbeiten und sich mit Pipes kombinieren lassen
+  - Unix Pipes kann man als primitive Nachrichtenkanäle ansehen, Unix Domain Sockets sind Nachrichtenquellen und Nachrichtenempfänger.
+</div>
+</div>
+
+<div class="step"  id="node" data-x="8000" data-y="4000">
+  <h3>Node Modules</h3>
+  <i>Schreibe Module so, dass sie</i>
+  <ul>
+    <li>nur eine Aufgabe erledigen und diese gut machen.</li>
+    <li>sie zusammenarbeiten.</li>
+    <li>Events verarbeiten, denn das ist eine universelle Schnittstelle.</li>
+    <li>Streams sind ein Strom gleichartiger Nachrichten</li>
+  </ul>
+
+<div class="mod-note">
+  - Die Unix Philosophie erfährt weitreichende Adaption in der Node.js Community, aber es gibt natürlich Unterschiede
+  - Node.js bringt gleich drei Arten von Interfaces mit. doch wir brauchen nur eines hier: Streams.
+  - Node.js nutzt Unix Domain Sockets für IPC und ein prozess-orientiertes Model für Parallelisierung.
+  - Aus dieser Konsequenz ergibt sich, dass man relativ einfach Prozesse unterschiedlich lokalisieren kann, mal auf der selben Maschine,
+    mal am anderen Ende der Welt.
+</div>
+</div>
+
+<div class="step"  id="micro-node" data-x="8000" data-y="6000">
+  <h3>µServices sind Node.js Module? Echt?</h3>
+  <ul>
+    <li>Isoliert und Autonom in Prozessen</li>
+    <li>Eine Aufgabe bzw. Verantwortlichkeit</li>
+    <li>Events-basiert, somit asynchron</li>
+    <li>Mit Streams als Schnittstellen, austauschbar</li>
+  </ul>
+
+<div class="mod-note">
+  - lapidar gesagt: Microservices sind Node.js Module in jeweils eigenem Prozess
+  - zu einfach um wahr zu sein?
+
+  - Möglich.
+</div>
+</div>
+
+<div class="step"  id="node-micro" data-x="8000" data-y="8000">
+  <p>OK! Node.js eignet sich wohl gut um µServices zu bauen.</p>
+  <p>Aber wo ist hier das Muster?</p>
+<div class="mod-note">
+  - Zumindest ist es für mich ein Hinweis, dass Node.js eine gute Plattform sein kann um µServices zu entwickeln.
+  - Doch wo ist hier das anwendbare Muster?
+  - Lasst uns die Aussage von eben umformulieren: Node.js Module bestimmter Ausprägung sind Microservices im selben Prozess!
+</div>
+</div>
+
+<div class="step"  id="module-micro" data-x="10000" data-y="8000">
+  <pre><code>
+module.exports = function( readable, resolve ){
+  var out = resolve('otherMicroClient')()
+
+  readable.on('readable', function( message ){
+    var res = doSomething(message)
+    out.write(makeMessage(res))
+  })
+}
+  </code></pre>
+<div class="mod-note">
+  - Wenn ich ein Modul so entwickle, dass
+    - es seine Abhängigkeiten abstrakt hinter Streams gekapselt erwartet
+    - grundsätzlich Asynchronität voraussetzt
+    - und keine sonstigen Annahmen über die Umgebung trifft
+    kann ich sehr spät entscheiden, ob ich eine microservicebasierte Architektur anwenden will oder nicht.
+  - Meine Module schreibe ich somit immer so, als ob es Microservices sind, wie eben definiert.
+  - Wie könnte nun der Code aussehen, der den Service letztlcih einbindet?
+</div>
+</div>
+
+<div class="step"  id="module-micro-http" data-x="10000" data-y="6000">
+  <pre><code>
+var myMicro = require('myMicro')
+var microIn = new PassThrough({objectMode:true})
+myMicro(microIn, resolveFunc)
+
+http.createServer(function(req,res){
+  createMessageFromHTTP(req, function(message){
+    microIn.write(message)
+  })
+})
+
+  </code></pre>
+<div class="mod-note">
+  - In-Prozess Beispiel mit HTTP input.
+</div>
+</div>
+
+<div class="step"  id="module-micro-mq" data-x="10000" data-y="4000">
+  <pre><code>
+var myMicro = require('myMicro')
+var microIn = require('someMQClient')()
+myMicro(microIn, resolveFunc)
+
+  </code></pre>
+<div class="mod-note">
+  - Oder mit MQ-input.
+</div>
+</div>
+
+<div class="step"  id="module-micro-child" data-x="10000" data-y="2000">
+  <pre><code>
+var myMicro = require('myMicro')
+var microIn = require('someMQClient')()
+myMicro(process.stdin, resolveFunc)
+
+  </code></pre>
+<div class="mod-note">
+  - Eigener Prozess Beispiel mit STDIN input.
+</div>
+</div>
+
+<div class="step"  id="module-micro-tooling" data-x="10000" data-y="0">
+  <h3>Muss ich das selbst schreiben?</h3>
+  <ul>
+    <li>node-seneca</li>
+    <li>dnode</li>
+    <li>(express)</li>
+    <li>roll your own</li>
+  </ul>
+<div class="mod-note">
+  - wie service letztlich eingbunden ist, verkommt so zu einem Implementierungsdetail, das man in ein Tool wegkapseln kann.
+  - Erst hier, beginnt µService als Muster für mich sinn zu machen.
+  - Es gibt auf NPM bereits Module, die einem dieses Vorgehen erleichtern können
+  - Die, die Einbindung sogar teilweise zu einem Konfiguratinsdetail machen.
+  - z.B. nodezoo ist eine microservice-basierte Anwendung entwickelt mit Seneca.
+  - in Seneca wurde ein etwas anderer Implementierungsansatz gewählt, statt mit Streams wird hier mit einem RPC ansatz gearbeitet
+  - doch von der Idee her ist hier ähnlich: abstrahiere Periferie definiere deine services als ein set von event-handlern
+  - dnode ist RPC über Streams. Auch hier lassen sich schnell microservices einbinden. dnode brint ein eigenes protokoll.
+  - express mounted apps, sind ein weiterer ansatz, wenn man bei http und rest bleiben will.
+  - Doch zugegeben, es gibt noch einiges zu tun.
+</div>
+</div>
+
+<div class="step"  id="module-micro-wein" data-x="12000" data-y="0">
+  <h3>Alter Wein zur Hilfe!</h3>
+<div class="mod-note">
+  - Doch was uns noch weiter helfen kann, ist wenn wir anfangen unser neues Muster zu übersetzen
+  - Hier nur zwei Beispiele:
+</div>
+</div>
+
+<div class="step"  id="actor" data-x="12000" data-y="2000">
+    <h3>µService ~ Aktor</h3>
+    <ul>
+      <li>Akka</li>
+      <li>Scala.js</li>
+    </ul>
+<div class="mod-note">
+  - Eine Logikeinheit mit einer MessageQueue davor? Das klingt wie Aktoren!
+  - Akka ist ein sehr weit entwickeltes Framework für Aktoren, der die späte Entscheidung über die Topographie meiner Servicelandschaft
+    durch Konfiguration ermöglicht.
+  - Es ist ein JVM Framework
+  - Mit Scala.js gibt es eine portierung für JavaScript.
+</div>
+</div>
+
+<div class="step"  id="interactor" data-x="12000" data-y="4000">
+    <h3>µService ~ Interactor</h3>
+    <ul>
+      <li>Boundaries ~ Streams</li>
+      <li>Totale Entkopplung</li>
+    </ul>
+<div class="mod-note">
+  - Eine einheit, die ihre sämtliche Periferie abstrahiert, die Abhängigkeiten entkoppelt und sich auf ein Use Case konzentriert?
+  - Oncle Bob hat uns von Interactoren, Boundaries und Gateways erzählt.
+  - Und weil es Oncle Bob war, haben ihm einige zugehört. Und was draus gemacht. Es lohnt sich hier nachzuforschen.
+</div>
+</div>
+
+<div class="step"  id="micro-muster-denk" data-x="12000" data-y="6000">
+    <h3>µService ist ein Denkmuster</h3>
+
+<div class="mod-note">
+  - hier ist der knick in meiner linse. Microservices sind für mich in erster linie eine Denkschule
+  - Wie teile ich mein produkt in dienste ein? wie organisiere ich meine organisation, wie gehe ich mit kommunikation,
+    änderungen, support, betrieb etcetcetc um.
+
+  CHECK TIME!!!
+</div>
+</div>
+
+<div class="step"  id="bonus" data-x="-6000" data-y="-2000">
+    <h1>Bonusrunde - Contra Ping Pong!</h1>
+    <p>"aber Gregor, was ist mit?"</p>
+<div class="mod-note">
+- Bonusrunde! Lasst uns den ernst etwas fahren lassen
+- Das spiel ist einfach: einer ruft ein aber raus, "aber Gregor, was ist mit?" und ich versuche mich nicht alzu blamieren
+  und darauf einzugehen.
+- zurück auf /fazit
+</div>
+</div>
+
+
+<div class="step"  id="fazit" data-x="-4000" data-y="-2000">
+    <h3>Was lernte ich daraus?</h3>
+    <ul>
+      <li>Alter Wein schmeckt</li>
+      <li>Neue Flaschen helfen</li>
+      <li>Mustererkennung ist wichtig</li>
+      <li>Muster übertragen und anwenden auch</li>
+      <li>Manchmal muss man Conway's Law umkehren.</li>
+    </ul>
+<div class="mod-note">
+  - nun zum Schluss will ich persönlich werden
+  - Die ganze Mühe sich durch den Dschungel der Microservices durchzuarbeiten hat sich für mich ausgezahlt
+  - Ich bin immer noch kein Microservice Experte, aber ich habe gelernt sie für mich einzuordnen
+  - Ich habe gesehen, wie sehr wir von der Arbeit unserer Vordenker aus der grauen Vorzeit profitieren und dass es
+    sich immer lohnt zurückzuschauen
+  - Doch gleichzeitig finde ich, dass es sich lohnt alte Erkenntnisse in neue Kleider, bzw alten Wein in neue Flaschen zu packen
+  - Es hilft neue Brücken in die Gegenwart zu bauen und abstrakten Konzepten anwendbare Substanz zu verleihen.
+  - Und manches mal hilft es althergebrachte Muster infrage zu stellen.
+  - Wenn wir lernen welche Muster und Konzepte es gibt, und wie wir sie in neuem Gewand wiederfinden, können wir Neues
+    besser und schneller Verstehen.
+  - Am ende können wir so von getaner Arbeit profitieren. Das ist wahre Wiederverwendung in der Software Entwicklung
+  - Und fast noch wichtiger für mich: Es hilft dabei sich selbst und die Organisation deren Teil ich bin, zu verändern.
+</div>
+</div>
+
+
+<div class="step"  id="rat" data-x="-2000" data-y="-2000">
+    <h3>Ratschlag</h3>
+    <ul>
+      <li>lernt was vor euch war</li>
+      <li>lernt es einzuordnen</li>
+      <li>lernt es zu transformieren</li>
+      <li>lernt es infrage zu stellen</li>
+    </ul>
+<div class="mod-note">
+  - Ich hoffe ich konnte euch etwas mitgeben. Wenn sonst nichts dabei ist
+  - dann ist das was ich aus dem ganzen zog, und was ich euch ans Herz legen möchte
+</div>
+</div>
+
+<div class="step"  id="danke" data-x="0" data-y="-2000">
+    <h1>Danke!</h1>
+<div class="mod-note">
+- Danke schön!
+</div>
+</div>
+
+
+
+
+<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+</div>
+
+  </div>
+<script src="impress.js"></script>
+<script>impress().init();</script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+</body>
+</html>

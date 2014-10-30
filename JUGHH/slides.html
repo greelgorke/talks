@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <title>Node.js 4 JUGHH</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" /> -->
+  <link href="../impress-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../highlight/styles/idea.css">
+<!--
+  <link rel="stylesheet" href="../highlight/styles/monokai_sublime.css">
+-->
+  <script src="../highlight/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</head>
+<body>
+  <div id="impress">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div class="step center"  id="title" data-x="0" data-y="-2000">
+  <img src="../img/nodejs-dark.png" alt="">
+  <h3>Was, warum und wie?</h3>
+</div>
+
+<div id="greelgorke1-web" class="step center" data-x="2000" data-y="-1000">
+  <img src="../img/gregor_elke.JPG" />
+  <p><a href="http://greelgorke.tumblr.com/about" target="_blank">@greelgorke</a></p>
+  <p>Node.js - Streams - Architecture</p>
+</div>
+<div id="greelgorke2-nodehh" class="step center" data-x="2000" data-y="1000">
+  <a href="http://www.codecentric.de/" target="_blank"><img class="bigger" src="../img/Logo_codecentric-1024x169.png" /></a>
+  <h4>&hearts; to build good software</h4>
+</div>
+<div id="greelgorke3-cc" class="step center" data-x="0" data-y="2000">
+  <a href="http://www.meetup.com/node-HH/" target="_blank">
+  <img src="../img/node-HH-avatar.png" />
+  </a>
+  <p>node.HH Organizer<p>
+
+</div>
+
+
+<div id="hex-3" class="step" data-x="-2000" data-y="1000">
+  <h2>Agenda</h2>
+  <ul>
+    <li>Was ist Node.js?</li>
+    <li>Warum ist Node.js interessant?</li>
+    <li>Wie und wofür nutzen?</li>
+  </ul>
+</div>
+<div id="lets-play" class="step" data-x="-2000" data-y="-1000">
+  <h2>Modus</h2>
+  <ul>
+    <li>möglichst interaktiv</li>
+    <li>wenig slides</li>
+    <li>gerne fragen!</li>
+    <li>etwas code?</li>
+  </ul>
+</div>
+
+<!-- 2. Ebene!!!!!! -->
+
+<div class="step"  id="node-is" data-x="0" data-y="-200" data-z="-1000" data-scale="0.1">
+  <h2>Node.js is</h2>
+  <ul>
+    <li>Technologie</li>
+    <li>Plattform</li>
+    <li>Ecosystem</li>
+    <li>Community</li>
+  </ul>
+</div>
+
+<div id="tech" class="step" data-x="200" data-y="-100" data-z="-1000" data-scale="0.1">
+  <h3>als Technologie</h3>
+  <p class="smaller">"Node.js® is a <strong>platform</strong> built on Chrome's <strong>JavaScript</strong> runtime for
+    easily building fast, <strong>scalable</strong> network applications. Node.js uses an <strong>event-driven</strong>,
+    <strong>non-blocking</strong> I/O model that makes it <strong>lightweight and efficient</strong>,
+    perfect for data-intensive real-time applications that run across <strong>distributed devices</strong>."</p>
+
+</div>
+<div id="platform" class="step" data-x="200" data-y="100" data-z="-1000" data-scale="0.1">
+  <h3>als Plattform</h3>
+  <ul>
+    <li>Fokus auf Netzwerkserver</li>
+    <li>bindings für System und C/C++ -libs</li>
+    <li>Modul System</li>
+    <li>Asynchrone Programmiermodell</li>
+  </ul>
+</div>
+<div id="ecosystem" class="step" data-x="0" data-y="200" data-z="-1000" data-scale="0.1">
+  <h3>als Ecosystem</h3>
+  <ul>
+    <li>npm rules the world, intentionally</li>
+    <li>one-thing-modules play together</li>
+    <li>cross-platform modules</li>
+    <li>C-lib bindings</li>
+  </ul>
+</div>
+<div id="community" class="step" data-x="-200" data-y="100" data-z="-1000" data-scale="0.1">
+  <h3>als Community</h3>
+  <ul>
+    <li>100k+ packages on npm</li>
+    <li>Back-Front-Full</li>
+    <li>CRubyJavaWebC#Python</li>
+    <li>GH-ML-Twitter-Blogs-Nodeschool</li>
+  </ul>
+</div>
+<div id="fragen1" class="step" data-x="-200" data-y="-100" data-z="-1000" data-scale="0.1">
+  <h3>Fragen soweit?</h3>
+</div>
+
+<!-- 3. Ebene!!!!!!  -->
+
+<div class="step"  id="why1" data-x="0" data-y="-20" data-z="-10000" data-scale="0.01">
+  <h3>Warum Node?</h3>
+  <ul>
+    <li>JavaScript everywhere</li>
+    <li>leichtgewichtige Alternative</li>
+    <li>Ecosystem + DevSpeed</li>
+    <li>Network first</li>
+  </ul>
+</div>
+
+<div id="why2" class="step" data-x="20" data-y="-10" data-z="-10000" data-scale="0.01">
+  <h3>Ist Node.js reif?</h3>
+  <ul>
+    <li>seit 2010 produktiv</li>
+    <li>0.12 ist RC</li>
+    <li>1.0 erwartet 2015</li>
+    <li>sponsored core team</li>
+    <li>Walmart, PayPal, Uber, Sage, LinkedIn, Yammer, Trello, Zendesk</li>
+  </ul>
+</div>
+<div id="why3" class="step" data-x="20" data-y="10" data-z="-10000" data-scale="0.01">
+  <h3>Ist Node.js enterprise-reif?</h3>
+  <ul>
+    <li>commercial support + consulting</li>
+    <li>enterprize-scale tooling</li>
+    <li>npme, Nexus, AppDynamics</li>
+    <li>libs für DB, ESB, MQ etc.</li>
+    <li>Cloud: AWS, Heroku, Azure, Joyent</li>
+  </ul>
+</div>
+<div id="wie" class="step" data-x="0" data-y="20" data-z="-10000" data-scale="0.01">
+  <h3>Wofür kann ich Node.js nutzen?</h3>
+  <ul>
+    <li>Web-App</li>
+    <li>Rich-Client-Backend</li>
+    <li>API-Gateway</li>
+    <li>Microservice</li>
+    <li>Rapid Prototyping</li>
+  </ul>
+</div>
+<div id="integration" class="step" data-x="-20" data-y="10" data-z="-10000" data-scale="0.01">
+  <h3>Wie kann ich Node.js integrieren?</h3>
+  <ul>
+    <li>klassisch SOA mit SOAP/REST</li>
+    <li>Message Queues</li>
+    <li>ESB: MuleESB, SwarmESB</li>
+    <li>Pub/Sub DBs</li>
+    <li>Apache Zookeeper</li>
+  </ul>
+</div>
+<div id="nodescool" class="step center" data-x="-20" data-y="-10" data-z="-10000" data-scale="0.01">
+  <img src="../img/nodeschool-ham.png" alt="">
+  <a href="nodeschool.io/hamburg">nodeschool.io/hamburg</a>
+  <p>08. November 11-18 Uhr</p>
+</div>
+  <div id="last" class="step center hex" data-x="0" data-y="-300" data-scale="5">
+  <h3>Let's talk <br> about Node!</h3>
+  </div>
+</div>
+
+<!--script src="https://raw.githubusercontent.com/bartaz/impress.js/master/js/impress.js"></script-->
+<script src="../impress.js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
